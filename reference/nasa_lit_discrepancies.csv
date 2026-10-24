@@ -1,0 +1,74 @@
+host,letters,parameter,literature_value,archive_value,reference,notes
+WASP-121,b,Transit Midpoint (days),60244.520379+0.000015 −0.000014 (BJD),2460245.020380+0.000015-0.000014 (JD),Pelletier et al. 2026,Typo in transit time in Section 2.2.1
+eps Ind A,,Rotation Period,-35.732 +0.006 -0.003,35.732 +0.006 -0.003,Feng et al. 2019,Typo in rotation period in Table 2
+TOI-7166,b,Transit Depth,6776 +198 -194 ppt,6776 +198 -194 ppm,Barkaoui et al. 2025,Typo in transit depth units in Table 2.
+GJ 1214,b,Mp sin i,8.41 +0.36 -0.35 M_Jupiter,8.41 +0.36 -0.35 M_Earth,Mahajan et al. 2024,Typo in the units for Mp sin i
+TOI-6420,b,Argument of Periastron,48.4 +9.4 -110,48.4 +9.4 -11.0,Schulte et al. 2025,Typo in argument of periastron lower uncertainty in Table 6.
+TOI-6420,,Stellar Age,4.4 +2.8 -20,4.4 +2.8 -2.0,Schulte et al. 2025,Typo in stellar age lower uncertainty in Table 6.
+WASP-131,b,Planet Radius,1.226.+/- 0.037 R⊙,1.226 +/- 0.037 R_Jupiter,Doyle et al. 2023,"Typo in units for planet radius, Table 2."
+Planet Mass,0.273 +/- 0.019 M⊙,,0.273 +/- 0.019 M_Jupiter,"Typo in units for planet mass, Table 2.",,"Typo in units for planet mass, Table 2."
+TOI-2202,b,Transit Duration,3.768 +0.032 -0.030 days,3.768 +0.032 -0.030 hours,Rice et al. 2023,"Typo in units for transit duration, Table 3."
+Gaia-4,,Stellar Surface Gravity,4.68 +/- 77,4.68 +/- 0.05,Stefansson et al. 2025,log(g) updated by author via private communication
+HD 20794,d & f,Planet Name,HD 20794 c HD 20794 d,HD 20794 d HD 20794 f,Nari et al. 2025,Planet names were corrected for consistency with prior literature.
+HAT-P-63,,Stellar Alias,Gaia DR2 4092190177629426816,Gaia DR2 4474644332250439552,Stassun et al. 2019,HAT-P-63 had the wrong Gaia DR2 ID. It has now been corrected.
+TOI-776,,Stellar Age,6.1 +7.0 -15.1 Gyr,6.1 +7.0 -5.5 Gyr,Fridlund et al. 2024,Typo in stellar age lower uncertainty in Table 3.
+TOI-1288,b,Planet Density,1.3 +/- 0.5 g/cm^3,1.6 +/- 0.14 g/cm^3,Knudstrup et al. 2023,Planet density updated by authors via private communication.
+TOI-815,,Stellar Density,2431 +122 −125 ρ⊙,2.431 +0.122 -0.125 g/cm^3,Psaridi et al. 2024,Typo in stellar density in Table E.1.
+TOI-1136,,Planet Name,"TOI-1136.01, TOI-1136.02, TOI-1136.03, TOI-1136.04","TOI-1136.02, TOI-1136.01, TOI-1136.04, TOI-1136.03",Polanski et al. 2024,Planet names corrected for consistency with prior literature.
+HAT-P-65,b,Mid-transit Time,2458319.35067 +/- 0.00021,2458139.35067 +/- 0.00021,Kang et al. 2024,The published version of the paper has not been updated to reflect a correction made to the mid-transit time found in the preprint version.
+LHS 475,b,transmission spectrum,,,Lustig-Yaeger et al. 2023,"The binned Firefly spectrum is published in fractional units, but should be percent."
+WASP-12,b,Radial Velocity Semi-amplitude,204.4±2.4 km/s,204.4±2.4 m/s,Albrecht et al. 2012,Units for radial velocity semi-amplitude given incorrectly in ref..
+GJ 849,c,Msini mass,0.99 +0.11 -0.11 M_Earth,0.99 +0.11 -0.11 M_Jupiter,Pinamonti et al. 2023,Msini mass units changed from M_Earth to M_Jupiter.
+HD 140901,See Exoplanet Archive Value,Planet Letter,b,c,,"Name of planet changed from HD 140901 b to HD 140901 c, as HD 140901 b already exists in literature."
+HIP 10337,See Exoplanet Archive Value,Planet Letter,b,c,Philipot et al. 2023,"Name of planet changed from HIP 10337 b to HIP 10337 c, as HIP 10337 b already exists in literature. (Philipot et al. 2023)"
+TOI-2048,b,Planet Radius,2.06+0.21-0.19,2.61+0.17-0.16,Newton et al. 2022,Planet radius updated by authors via private communication.
+EPIC 201497682,none,Planet Name,EPIC 201497682.01,EPIC 201497682.02,Kruse et al. 2019,Planet candidate name corrected for consistency with prior literature.
+mua Ara,See Exoplanet Archive Value,Planet Letter,e,c,Benedict et al. 2022 Pepe et al. 2007,mua Ara c already exists in the literature
+mua Ara,c,,d,mua Ara d already exists in the literature,,mua Ara d already exists in the literature
+mua Ara,d,,d,mua Ara e already exists in the literature,,mua Ara e already exists in the literature
+K2-229,b,δ,0.01625,0.01625%,Livingston et al. 2018,Transit depth value for EPIC 228801451.01 published in the wrong units.
+K2-229,c,δ,0.05325,0.05325%,Livingston et al. 2018,Transit depth value for EPIC 228801451.02 published in the wrong units.
+K2-228,b,,0.02587,0.02587%,,Transit depth value for EPIC 228798746.01 published in the wrong units.
+K2-224,b,,0.03270,0.03270%,,Transit depth value for EPIC 228725972.01 published in the wrong units.
+K2-224,c,,0.05928,0.05928%,,Transit depth value for EPIC 228725972.02 published in the wrong units.
+K2-162,b,,0.02669,0.02669%,,Transit depth value for EPIC 201390048.01 published in the wrong units.
+EPIC 201497682,none,Planet Name,EPIC 201497682.03,EPIC 201497682.04,Kruse et al. 2019,Planet candidate name EPIC 201497682.03 changed to EPIC 201497682.04 by authors via private communication.
+EPIC 206024342,"none (appears as ""p4"" in the paper)",The entire candidate,"The candidate is labeled ""confirmed""",The candidate is not in the archive,Adams et al. 2021,"The fourth signal in the EPIC 206024342 system (labeled as ""p4"" with a 27-day orbital period) was mislabeled in one table. After private communication with the author, it was determined this object remains a planet candidate."
+WASP-126,b,Orbital Period,2.8493819+/-0.0000013 d,3.2887884+/-0.0000013 d,Maciejewski 2020,Incorrect values reported in Table 6.
+HD 211403,b,Equilibrium Temperature (K),3.80 ± 13.00 (K),380 ± 13 (K),Demangeon et al. 2021,Typo in equilibrium temperature in Table E.1.
+Kepler-177,b,Orbital Period,35.8601,36.8601,Vissapragada et al. 2020,Orbital period value provided by author via private communication.
+GJ 1132,b,,Transmission spectroscopy transit depth,Not provided,,Orbital period value/uncertainties provided by authors via private communication.
+WASP-12,b,,1.09142 ± 3.3E-07,1.09142245 ± 0.00000033,,1.09142245 ± 0.00000033
+HD 189733,b,,2.21858 ± 1.5E-07,2.21857567 ± 0.00000015,,2.21857567 ± 0.00000015
+WASP-33,b,,1.21987 ± 4.5E-07,1.21986983 ± 0.00000045,,1.21986983 ± 0.00000045
+Kepler-78,b,,0.35501 ± 6.0E-08,0.35500744 ± 0.00000006,,0.35500744 ± 0.00000006
+Kepler-454,b,,10.57000 ± 7.5E-08,10.570000000 ± 0.000000075,,10.570000000 ± 0.000000075
+CoRoT-7,b,,0.85359 ± 6.0E-09,0.853591630 ± 0.000000006,,0.853591630 ± 0.000000006
+GJ 414 A,b,Semi-Major Axis (AU),1.400 +0.055 -0.060,0.2324 +0.0092 -0.0099,Dedrick et al. 2021,Typo in semi-major axis in Table 3.
+GJ 414 A,c,,0.2324 +0.0092 -0.0099,1.400 +0.055 -0.060,,1.400 +0.055 -0.060
+HD 134987,-,Stellar Luminosity (log10(Lsun)),1.80±0.14,0.255 +0.033 -0.035,Jones et al. 2010,"Typo in luminosity parameter name in Table 1. It's actual luminosity, not log(luminosity)."
+HD 97658,b,Planet Mass,0.03±0.00,0.02794773±0.00387274,Stassun et al. 2017,Planet mass value/uncertainties provided by authors via private communication.
+Kepler-454,b,,0.02±0.00,0.01904597±0.00475153,,0.01904597±0.00475153
+Kepler-93,b,,0.01±0.00,0.01429776±0.00266796,,0.01429776±0.00266796
+CoRoT-7,b,,0.01±0.00,0.01282637±0.00320869,,0.01282637±0.00320869
+Kepler-78,b,,0.01±0.00,0.00618935±0.00168169,,0.00618935±0.00168169
+Kepler-37,b,,Planet Radius,0.03±0.00,,Planet radius value/uncertainties provided by authors via private communication.
+HD 39091 (pi Men),b,Longitude of Periastron,151.7±0.9,331.7±0.9,Xuan & Wyatt 2020,Longitude of periastron transformed to match coordinate system in previous references.
+HAT-P-11,c,,323.9±4.1,143.9±4.1,,143.9±4.1
+WASP-150,b,Orbital Period,5.6442 +0.0 -0.0,5.644207 +0.000003 -0.000004,Cooke et al. 2020,Typo in published orbital period uncertainty in Table 7; confirmed with author.
+WASP-176,b,,3.8991 +0.0 -0.0,3.899052 +0.000005 -0.000005,,3.899052 +0.000005 -0.000005
+TOI-677,,RA/Dec,"15h32m17.84s, −22d21m29.74s","09h36m28.65s, -50d27m47.14s",Jordán et al. 2020,Incorrect coordinates reported in Table 1.
+Qatar-7,b,Orbital Period,2.032046 +/- 0.0000097,2.032046 +0.0000097 -0.000014,Alsubai et al. 2019,Typo in published orbital period uncertainty in Table 5; confirmed with author.
+Kepler-10,c,Orbital Period,42.29485 days,45.29485 days,Fressin et al. 2011,Typo in published period in Table 2; confirmed with author.
+CoRoT-20,b,Distance to System,1.23+/-120 kpc,1.23+/-0.12 kpc,Deleuil et al. 2012,Typo in Table 3.
+Fomalhaut,b,Orbit Semi-Major Axis,119 au,115 au,Kalas et al. 2008,"119 au is quoted in the abstract, but 115 au appears repeatedly throughout the paper."
+GJ 3470,b,RV Semi-Amplitude,0.00901+/-0.00075 m/s,9.01+/-0.75 m/s,Bonfils et al. 2012,Unit in Table 2 should be km/s.
+HD 203030,See Exoplanet Archive Value,Planet Letter,B,b,Metchev & Hillenbrand 2006,The Exoplanet Archive adopts lower-case letters for planetary mass companions.
+HAT-P-27,b,RV semi-amplitude,0.0912+/-0.002 m/s,91.2+/-2 m/s,Brown et al. 2012,Unit in Table 7 should be km/s.
+Kepler-46,,Planet Letter,c,d,Rowe et al. 2014,Typo; Kepler-46 c already exists in literature.
+HD 60532,"b, c",Stellar Surface Gravity,-3.83,3.83,Desort et al. 2014,Typo in Table 1.
+Kepler-289,See Exoplanet Archive Value,Planet Letter,PH3 d PH3 c,Kepler-289 c Kepler-289 d,Schmitt et al. 2014,Kepler-289 c already exists in literature.
+BD+49 828,,log (Stellar Age) [yr],9.37+/-18,9.37+/-0.18,Niedzielski et al. 2015,Typo; missing decimal place in uncertainty. Note that Exoplanet Archive provides age in Gyr.
+gam Cep,b,Time of Periastron,253121.925,2453121.925,Hatzes et al. 2003,Typo in Table 6.
+HD 17674,b,Time System,RJD,JD,Rey et al. 2017,Time system mis-reported as RJD.
+K2 Candidates in Table 2,Transit Duration,,hours,days,,Typo in Table 2; transit durations mis-reported in hours.

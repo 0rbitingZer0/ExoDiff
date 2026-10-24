@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exodiff"
+dynamic = ["version"]
+description = "Evidence-traceable investigation of published exoplanet measurements"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.setuptools.dynamic]
+version = { attr = "exodiff.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

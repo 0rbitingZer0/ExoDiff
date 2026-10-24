@@ -1,0 +1,126 @@
+name: Update site
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**", "src/**", "scripts/**", "tests/**", "requirements-ci.txt", ".github/workflows/**"]
+
+permissions: {}
+
+concurrency:
+  group: update-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    outputs:
+      down: ${{ steps.summary.outputs.down }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.14"
+          cache: pip
+      - run: python -m pip install --require-hashes -r requirements-ci.txt
+      - run: pytest -q
+      - name: Restore the saved source copies
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: data/raw
+          key: raw-${{ github.run_id }}
+          restore-keys: raw-
+      - name: Use only saved copies that match their recorded fingerprint
+        run: python scripts/verify_raw.py --delete
+      - name: Ask each source what changed, download only that, run the checks
+        run: |
+          python scripts/fetch_nasa.py
+          python scripts/fetch_composite.py
+          python scripts/fetch_public.py
+          python scripts/join_public.py
+          python scripts/screen_radius.py > /dev/null
+          python scripts/run_check_c.py
+          python scripts/fetch_eu.py
+          python scripts/fetch_simbad.py
+          python scripts/run_check_d.py --fetch-sources
+          python scripts/fetch_gaia.py
+          python scripts/run_check_e.py
+          python scripts/fetch_overview_notes.py
+          python scripts/screen_radius.py --if-notes-changed > /dev/null
+          python scripts/build_site.py
+      - name: Sources in this run
+        id: summary
+        run: python scripts/run_summary.py
+      - name: Keep only the newest copy of each source for the cache
+        run: python scripts/prune_raw.py --delete
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: history
+          path: |
+            site/data/ledger.json
+            site/data/updates.json
+            site/data/meta.json
+          if-no-files-found: error
+          retention-days: 7
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          path: site
+
+  save-history:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: history
+          path: ${{ runner.temp }}/history
+      - name: Check the files, then commit them if they changed
+        run: |
+          python3 scripts/check_history.py "$RUNNER_TEMP/history" site/data
+          mkdir -p site/data
+          cp "$RUNNER_TEMP/history/ledger.json" "$RUNNER_TEMP/history/updates.json" "$RUNNER_TEMP/history/meta.json" site/data/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f site/data/ledger.json site/data/updates.json site/data/meta.json
+          git diff --cached --quiet || git commit -m "History: run of $(date -u +%Y-%m-%d)"
+          git push
+
+  deploy:
+    needs: [build, save-history]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+
+  alert:
+    needs: [build, deploy]
+    if: needs.build.outputs.down != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: A source couldn't be reached
+        env:
+          DOWN: ${{ needs.build.outputs.down }}
+        run: |
+          echo "::error::Unreachable in this run: $DOWN. The site was published with the saved copies; the run summary has the details."
+          exit 1

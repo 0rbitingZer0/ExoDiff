@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none';">
+  <title>ExoDiff - 0rbitingZer0</title>
+  <meta name="description" content="Where does exoplanet data disagree? A data experiment.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="#/" class="site-logo">ExoDiff</a>
+    <nav class="site-nav" aria-label="Pages">
+      <a href="#/" data-route="list">planets</a>
+      <a href="#/changes" data-route="changes">changes</a>
+      <a href="#/methodology" data-route="method">methodology</a>
+      <a href="#/about" data-route="about">about</a>
+    </nav>
+    <p class="source-note" id="source-note" hidden></p>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="view-list" class="view" aria-labelledby="list-title">
+  <div class="hero">
+    <div class="container hero-brand">
+      <svg class="planet-mark" viewBox="0 0 120 120" aria-hidden="true">
+        <ellipse class="orbit" cx="60" cy="60" rx="56" ry="20" transform="rotate(-18 60 60)"/>
+        <circle class="body" cx="60" cy="60" r="26"/>
+        <path class="band" d="M37 52 Q60 46 83 52"/>
+        <path class="band" d="M35 63 Q60 58 85 63"/>
+        <path class="band" d="M39 73 Q60 69 81 73"/>
+        <path class="ring-front" d="M4.7 77.3 A56 20 -18 0 0 115.3 42.7"/>
+        <circle class="moon" cx="108" cy="36" r="3.2"/>
+      </svg>
+      <div>
+        <h1 id="list-title">ExoDiff</h1>
+        <p class="tagline">Where does exoplanet data disagree?</p>
+        <p class="tagline-sub">A data experiment.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <form id="filters" class="toolbar" role="search">
+        <label class="search"><span>find a planet by its name, its star or a paper</span>
+          <input type="search" name="q" placeholder="GJ 3929, Kepler-138, Beard" autocomplete="off"></label>
+        <div class="seg" role="radiogroup" aria-label="Which planets">
+          <label><input type="radio" name="scope" value="findings" checked><span id="scope-findings">with findings</span></label>
+          <label><input type="radio" name="scope" value="notes"><span id="scope-notes">with notes</span></label>
+          <label><input type="radio" name="scope" value="all"><span id="scope-all">all</span></label>
+        </div>
+        <label class="sort">type
+          <select name="type" id="type-filter"><option value="">any</option></select></label>
+        <label class="sort">sort
+          <select name="sort">
+            <option value="az">A–Z</option>
+            <option value="findings">most findings</option>
+            <option value="notes">most notes</option>
+            <option value="year">discovered, newest</option>
+          </select></label>
+      </form>
+      <div class="list-head">
+        <p class="count" id="count" aria-live="polite"></p>
+        <p class="changes-line" id="changes-line"></p>
+        <button type="button" class="link-button" id="export">download this list (CSV)</button>
+      </div>
+      <nav class="pager pager-top" id="pager-top" aria-label="Pages (top)" hidden></nav>
+      <ul class="planet-list" id="list"></ul>
+      <nav class="pager" id="pager" aria-label="Pages" hidden></nav>
+    </div>
+  </div>
+</section>
+
+<section id="view-planet" class="view" hidden>
+  <div class="container planet-page" id="planet"></div>
+</section>
+
+<section id="view-changes" class="view" hidden>
+  <div class="container how" id="changes"></div>
+</section>
+
+<section id="view-about" class="view" hidden>
+  <div class="container how" id="about">
+    <h1 class="page-title">About ExoDiff</h1>
+    <div id="about-intro"></div>
+
+    <h2 class="section-title">data sources</h2>
+    <ul class="prose">
+      <li><a href="https://exoplanetarchive.ipac.caltech.edu/">NASA Exoplanet Archive</a></li>
+      <li><a href="https://science.nasa.gov/exoplanets/exoplanet-catalog/">NASA Exoplanet Catalog</a></li>
+      <li><a href="https://exoplanet.eu/">exoplanet.eu</a></li>
+      <li><a href="https://www.cosmos.esa.int/web/gaia/dr3">Gaia DR3</a></li>
+      <li><a href="https://simbad.cds.unistra.fr/simbad/">SIMBAD</a>, used to match star names between catalogues</li>
+    </ul>
+
+    <h2 class="section-title">implementation</h2>
+    <p class="prose">Built with Claude Opus 5.5. The data processing and comparisons are performed by <strong class="key">ordinary code, not by an AI model</strong> interpreting the measurements.</p>
+    <p class="prose">ExoDiff is an independent project and is not affiliated with NASA, Caltech, ESA, exoplanet.eu or CDS.</p>
+    <p class="prose">For the checks, statistical rules, validation results and limitations, see the <a href="#/methodology">methodology</a> page.</p>
+
+    <h2 class="section-title">credits</h2>
+    <p class="prose">This research has made use of the <a href="https://exoplanetarchive.ipac.caltech.edu/">NASA Exoplanet Archive</a>, which is operated by the California Institute of Technology, under contract with the National Aeronautics and Space Administration under the Exoplanet Exploration Program.</p>
+    <p class="prose">This research has made use of data obtained from or tools provided by the portal <a href="https://exoplanet.eu/">exoplanet.eu</a> of The Extrasolar Planets Encyclopaedia (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
+    <p class="prose">Gaia data: ESA/Gaia/DPAC, <a href="https://www.cosmos.esa.int/web/gaia-users/license">CC BY-NC 3.0 IGO</a>.</p>
+    <p class="prose">This research has made use of the SIMBAD database, CDS, Strasbourg Astronomical Observatory, France.</p>
+  </div>
+</section>
+
+<section id="view-method" class="view" hidden>
+  <div class="container how" id="how">
+    <h1 class="page-title">Methodology</h1>
+    <div id="how-intro"></div>
+
+    <h2 class="section-title">the checks</h2>
+    <div id="how-steps"></div>
+
+    <h2 class="section-title">when is a difference a finding?</h2>
+    <div id="how-lead"></div>
+    <details class="fold"><summary>the formula, for the technical reader</summary><div id="how-statistic"></div></details>
+
+    <h2 class="section-title">how uncertainty is handled</h2>
+    <div id="how-uncertainty"></div>
+
+    <h2 class="section-title">validation</h2>
+    <div id="how-eval"></div>
+
+    <h2 class="section-title">implementation and review</h2>
+    <p class="prose">Claude Opus 5.5 proposed the checks and wrote the code. The author selected and approved the checks.</p>
+    <p class="prose">The numbers are produced by <strong class="key">ordinary code that can be rerun</strong>; no AI model reads the measurements to generate the results. AI review panels checked the data handling.</p>
+
+    <details class="fold"><summary>the physics behind “does each row add up?”, with formulas and sources</summary><div class="cards" id="how-cards"></div></details>
+    <details class="fold"><summary>units used on this site</summary><div id="how-units"></div></details>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Data from NASA, exoplanet.eu, ESA Gaia and SIMBAD; credits on the <a href="#/about">about</a> page.</p>
+    <p>&copy; 2026 <a href="https://0rbitingzer0.github.io/">0rbitingZer0</a></p>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
