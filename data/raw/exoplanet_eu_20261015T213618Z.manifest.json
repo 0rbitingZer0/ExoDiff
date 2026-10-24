@@ -1,0 +1,8 @@
+{
+  "source_name": "The Extrasolar Planets Encyclopaedia (exoplanet.eu), confirmed planets CSV",
+  "source_url": "https://exoplanet.eu/catalog/csv/",
+  "licence": "CC BY 4.0",
+  "retrieved_at_utc": "2026-10-15T21:36:18.747289+00:00",
+  "row_count": 8354,
+  "sha256": "daf05858ce56ce6b263050e13291976e61ec2128dcf78b887138b34b6b610de2"
+}
