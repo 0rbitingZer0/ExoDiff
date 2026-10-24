@@ -1,0 +1,15 @@
+{
+  "source_name": "exoplanet.eu planet pages (publication per value)",
+  "licence": "CC BY 4.0",
+  "retrieved_at_utc": "2026-10-20T21:41:33.511059+00:00",
+  "pages_requested": 0,
+  "pages_read": 0,
+  "pages_kept": 290,
+  "failures": 0,
+  "merged_from": [
+    "exoplanet_eu_sources_20261019T221009Z.json",
+    "exoplanet_eu_sources_20261020T214133Z.json"
+  ],
+  "sha256": "10575ab149ec0bc83222cbe10e6fe4f0eaab7308bb95598981ca6d73bf95817e",
+  "file": "exoplanet_eu_sources_20261020T214134Z.json"
+}

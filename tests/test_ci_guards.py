@@ -47,6 +47,18 @@ def test_a_restored_copy_must_be_on_the_committed_list(tmp_path):
         "forged_20261002T000000Z.csv", "forged_20261002T000000Z.manifest.json"]
 
 
+def test_a_copy_that_comes_from_git_unchanged_is_kept(tmp_path):
+    verify = load("verify_raw")
+    good = b"a,b\n1,2\n"
+    for name in ("seed_20261003T000000Z.csv", "swapped_20261003T000000Z.csv"):
+        (tmp_path / name).write_bytes(good)
+        (tmp_path / name.replace(".csv", ".manifest.json")).write_text(json.dumps({"sha256": hashlib.sha256(good).hexdigest()}))
+    from_git = {n: verify.git_blob((tmp_path / n).read_bytes()) for n in
+                ("seed_20261003T000000Z.csv", "seed_20261003T000000Z.manifest.json", "swapped_20261003T000000Z.manifest.json")}
+    from_git["swapped_20261003T000000Z.csv"] = verify.git_blob(b"a,b\n9,9\n")
+    assert [p.name for p in verify.bad_files(tmp_path, {"other.csv": "0" * 64}, from_git)] == ["swapped_20261003T000000Z.csv"]
+
+
 def _history(folder, updates=None, leads=None):
     folder.mkdir(exist_ok=True)
     (folder / "ledger.json").write_text(json.dumps({"run": {"date": "2026-10-15", "data": "d", "code": "c", "skipped": []},

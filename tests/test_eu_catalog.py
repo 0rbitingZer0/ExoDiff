@@ -202,6 +202,14 @@ def test_gap_score_applies_rounding_once():
     assert abs(gap_in_error_bars(0, _interval(0, 1, 1), 3, _interval(3, 1, 1), tol=1) - 2 / 2 ** 0.5) < 1e-12
 
 
+def test_nasas_rounding_is_allowed_for():
+    nasa = nasa_rows(); nasa.loc[0, ["pl_orbper", "pl_orbpererr1", "pl_orbpererr2"]] = [4.532, 2e-6, -2e-6]
+    r = _buckets({"orbital_period": 4.532055, "orbital_period_error_min": 1e-6, "orbital_period_error_max": 1e-6}, nasa)
+    assert r.loc["period", "bucket"] == "D-close" and r.loc["period", "bars"] == 0
+    nasa.loc[0, "pl_orbper"] = 4.53212
+    assert _buckets({"orbital_period": 4.532055, "orbital_period_error_min": 1e-6, "orbital_period_error_max": 1e-6}, nasa).loc["period", "bucket"] == "D-disagree"
+
+
 def test_limit_boundaries():
     nasa = nasa_rows(); nasa["pl_masselim"] = [1, None]; nasa.loc[0, "pl_masse"] = 2.0
     assert _buckets({"mass": 9 / 317.83, "mass_error_min": 9 / 317.83, "mass_error_max": 0}, nasa).loc["mass", "bucket"] == "D-limit"
