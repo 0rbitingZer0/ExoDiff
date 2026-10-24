@@ -38,7 +38,7 @@ FIELDS = {
     "eccentricity": ("eccentricity", 1.0, "pl_orbeccen"),
     "distance": ("star_distance", 1.0, "sy_dist"),
 }
-FINE_WHEN = {b: wording.means(f"D/{b}") for b in ("D-same", "D-other-paper", "D-within-errors", "D-disagree", "D-newer-paper", "D-eu-paper", "D-other-row", "D-close", "D-letters", "D-limit", "D-catalogue-distance", "D-no-errors", "D-theoretical", "D-absent")}
+FINE_WHEN = {b: wording.means(f"D/{b}") for b in ("D-same", "D-other-paper", "D-within-errors", "D-disagree", "D-same-paper", "D-newer-paper", "D-eu-paper", "D-other-row", "D-close", "D-letters", "D-limit", "D-catalogue-distance", "D-no-errors", "D-theoretical", "D-absent")}
 
 
 def fetch_eu(project_root: Path, timeout_seconds: int = 400, session=None) -> dict:
@@ -322,12 +322,12 @@ def check_d(nasa: pd.DataFrame, eu: pd.DataFrame, join: dict, sources: dict | No
                             bucket, ref = "D-other-row", held["label"]
                         else:
                             z = gap_in_error_bars(nasa_of(hrow)[0], h_iv, value, _interval(value, em, ep), tol + nasa_rounding(hrow)) if h_iv and _interval(value, em, ep) else None
-                            bucket, ref = ("D-close" if z is not None and z < CLOSE_BARS else "D-disagree"), held["label"]
+                            bucket, ref = ("D-close" if z is not None and z < CLOSE_BARS else "D-same-paper"), held["label"]
                         rec["nasa_row_value"] = _num(hrow.get(col))
-                elif held_all:
-                    bucket, ref = "D-disagree", None
                 elif cited is not None and newest_nasa and cited.get("year") and cited["year"] > newest_nasa:
                     bucket, ref = "D-newer-paper", None
+                elif held_all:
+                    bucket, ref = "D-disagree", None
                 elif cited is not None:
                     bucket, ref = "D-eu-paper", None
                 else:

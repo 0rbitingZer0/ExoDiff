@@ -143,11 +143,11 @@ def test_cited_paper_decides():
     pub = lambda author, year, vol="1", page="1": {"first_author": author, "year": year, "journal": "AJ", "volume": vol, "page": page}
     nasa = nasa_rows(); nasa["pl_pubdate"] = ["2022-03", "2022-05"]
     held = _buckets({"star_distance": 16.5}, nasa, {"GJ 3929 b": {"distance": [pub("BEARD C.", 2022)]}})
-    assert held.loc["distance", "bucket"] == "D-disagree" and held.loc["distance", "matched_reference"] == "Beard et al. 2022"
+    assert held.loc["distance", "bucket"] == "D-same-paper" and held.loc["distance", "matched_reference"] == "Beard et al. 2022"
     newer = _buckets({"star_distance": 16.5}, nasa, {"GJ 3929 b": {"distance": [pub("SMITH A.", 2026)]}})
     assert newer.loc["distance", "bucket"] == "D-newer-paper" and newer.loc["distance", "eu_reference"] == "Smith 2026"
     several = _buckets({"star_distance": 16.5}, nasa, {"GJ 3929 b": {"distance": [pub("SMITH A.", 2026), pub("BEARD C.", 2022)]}})
-    assert several.loc["distance", "bucket"] == "D-disagree" and pd.isna(several.loc["distance", "matched_reference"])
+    assert several.loc["distance", "bucket"] == "D-newer-paper" and pd.isna(several.loc["distance", "matched_reference"])
     assert several.loc["distance", "eu_reference"] == "Smith 2026; Beard 2022"
     older = _buckets({"star_distance": 16.5}, nasa, {"GJ 3929 b": {"distance": [pub("JONES B.", 2019)]}})
     assert older.loc["distance", "bucket"] == "D-eu-paper"
@@ -173,7 +173,7 @@ def test_same_paper_is_judged_against_that_papers_row():
     nasa.loc[1, ["pl_orbper", "pl_orbpererr1", "pl_orbpererr2"]] = [9.1205, 0.0005, -0.0005]
     src = {"GJ 3929 b": {"period": [{"first_author": "KEMMER J.", "year": 2022}]}}
     r = _buckets({"orbital_period": 9.1265, "orbital_period_error_min": 0.0005, "orbital_period_error_max": 0.0005}, nasa, src)
-    assert r.loc["period", "bucket"] == "D-disagree" and r.loc["period", "nasa_row_value"] == 9.1205
+    assert r.loc["period", "bucket"] == "D-same-paper" and r.loc["period", "nasa_row_value"] == 9.1205
     near = _buckets({"orbital_period": 9.1219, "orbital_period_error_min": 0.0005, "orbital_period_error_max": 0.0005}, nasa, src)
     assert near.loc["period", "bucket"] == "D-close"
 
