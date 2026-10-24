@@ -106,7 +106,7 @@ def explain(planets: dict) -> dict:
             ratio = a / b if a and b else None
             why = "letters" if l.get("bucket") == "D-letters" else None
             if l["kind"] == "A":
-                why = "unit-copies" if l["rule"] in ("A5", "A5m") else "impossible"
+                why = "unit-copies" if l["rule"] in ("A5", "A5m") else None if l["rule"].startswith("A8") else "impossible"
             elif l["kind"] == "C":
                 why = "catalog"
             elif l["kind"] == "D" and b is not None:

@@ -136,6 +136,117 @@
 }
 ]
 },
+"51 Peg b": {
+"eccentricity": [
+{
+"arxiv": "1108.1811",
+"first_author": "WANG J. & FORD E.",
+"journal": "MNRAS",
+"page": "1822",
+"title": "On the Eccentricity Distribution of Short-Period Single-Planet Systems",
+"volume": "418",
+"year": 2011
+},
+{
+"arxiv": null,
+"first_author": "MARCY G.",
+"journal": "Astrophys. J.",
+"page": "926",
+"title": "The Planet Around 51 Peg",
+"volume": "481",
+"year": 1997
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "CONT D.",
+"journal": "Astron. & Astrophys.",
+"page": "A345",
+"title": "51 Peg b revisited with VLT/CRIRES+. Constraints on atmospheric thermal structure, chemical composition, and an alternative orbital solution",
+"volume": "710",
+"year": 2026
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "CONT D.",
+"journal": "Astron. & Astrophys.",
+"page": "A345",
+"title": "51 Peg b revisited with VLT/CRIRES+. Constraints on atmospheric thermal structure, chemical composition, and an alternative orbital solution",
+"volume": "710",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MARCY G.",
+"journal": "Astrophys. J.",
+"page": "926",
+"title": "The Planet Around 51 Peg",
+"volume": "481",
+"year": 1997
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "CONT D.",
+"journal": "Astron. & Astrophys.",
+"page": "A345",
+"title": "51 Peg b revisited with VLT/CRIRES+. Constraints on atmospheric thermal structure, chemical composition, and an alternative orbital solution",
+"volume": "710",
+"year": 2026
+},
+{
+"arxiv": "1108.1811",
+"first_author": "WANG J. & FORD E.",
+"journal": "MNRAS",
+"page": "1822",
+"title": "On the Eccentricity Distribution of Short-Period Single-Planet Systems",
+"volume": "418",
+"year": 2011
+},
+{
+"arxiv": null,
+"first_author": "MARCY G.",
+"journal": "Astrophys. J.",
+"page": "926",
+"title": "The Planet Around 51 Peg",
+"volume": "481",
+"year": 1997
+}
+],
+"radius": [
+{
+"arxiv": "2201.03600",
+"first_author": "SPRING E.",
+"journal": "Astron. & Astrophys.",
+"page": "A121",
+"title": "Black Mirror: The impact of rotational broadening on the search for reflected light from 51 Pegasi b with high resolution spectroscopy",
+"volume": "659",
+"year": 2022
+},
+{
+"arxiv": "1504.05962",
+"first_author": "MARTINS J.",
+"journal": "Astron. & Astrophys.",
+"page": "A134",
+"title": "Evidence for a spectroscopic direct detection of reflected light from 51 Pegasi b",
+"volume": "576",
+"year": 2015
+},
+{
+"arxiv": "1108.1811",
+"first_author": "WANG J. & FORD E.",
+"journal": "MNRAS",
+"page": "1822",
+"title": "On the Eccentricity Distribution of Short-Period Single-Planet Systems",
+"volume": "418",
+"year": 2011
+}
+]
+},
 "BEBOP-3 b": {
 "eccentricity": [
 {
@@ -232,6 +343,83 @@
 "title": "The Second Discovery from the COol Companions ON Ultrawide orbiTS (COCONUTS) Program: A Cold Wide-Orbit Exoplanet around a Young Field M Dwarf at 10.9 pc",
 "volume": "916",
 "year": 2021
+}
+]
+},
+"CoRoT-13 b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "CABRERA J.",
+"journal": "Astron. & Astrophys.",
+"page": "A93",
+"title": "Transiting exoplanets from the CoRoT space mission XVI. CoRoT-13b: a dense hot Jupiter in transit around a star with solar metallicity and super-solar Lithium content",
+"volume": "522",
+"year": 2010
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "CABRERA J.",
+"journal": "Astron. & Astrophys.",
+"page": "A93",
+"title": "Transiting exoplanets from the CoRoT space mission XVI. CoRoT-13b: a dense hot Jupiter in transit around a star with solar metallicity and super-solar Lithium content",
+"volume": "522",
+"year": 2010
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "CABRERA J.",
+"journal": "Astron. & Astrophys.",
+"page": "A93",
+"title": "Transiting exoplanets from the CoRoT space mission XVI. CoRoT-13b: a dense hot Jupiter in transit around a star with solar metallicity and super-solar Lithium content",
+"volume": "522",
+"year": 2010
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "CABRERA J.",
+"journal": "Astron. & Astrophys.",
+"page": "A93",
+"title": "Transiting exoplanets from the CoRoT space mission XVI. CoRoT-13b: a dense hot Jupiter in transit around a star with solar metallicity and super-solar Lithium content",
+"volume": "522",
+"year": 2010
+}
+],
+"period": [
+{
+"arxiv": "2112.10535",
+"first_author": "KLAGYIVIK P.",
+"journal": "Frontiers in Astron. and Spa. Sci.",
+"page": "210",
+"title": "Orbital Period Refinement of CoRoT Planets with TESS Observations",
+"volume": "8",
+"year": 2021
+},
+{
+"arxiv": null,
+"first_author": "CABRERA J.",
+"journal": "Astron. & Astrophys.",
+"page": "A93",
+"title": "Transiting exoplanets from the CoRoT space mission XVI. CoRoT-13b: a dense hot Jupiter in transit around a star with solar metallicity and super-solar Lithium content",
+"volume": "522",
+"year": 2010
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "CABRERA J.",
+"journal": "Astron. & Astrophys.",
+"page": "A93",
+"title": "Transiting exoplanets from the CoRoT space mission XVI. CoRoT-13b: a dense hot Jupiter in transit around a star with solar metallicity and super-solar Lithium content",
+"volume": "522",
+"year": 2010
 }
 ]
 },
@@ -547,6 +735,125 @@
 "title": "A transiting giant planet with a temperature between 250 K and 430 K",
 "volume": "464",
 "year": 2010
+}
+]
+},
+"DMPP-2 b": {
+"distance": [
+{
+"arxiv": "1912.10874",
+"first_author": "HASWELL C.",
+"journal": "Nature Astronomy",
+"page": "408-418",
+"title": "Dispersed Matter Planet Project Discoveries of Ablating Planets Orbiting Nearby Bright Stars",
+"volume": "4",
+"year": 2020
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "STANDING M.R.",
+"journal": "MNRAS",
+"page": "stag370",
+"title": "The Dispersed Matter Planet Project Sample -- Detection limits, Occurrence Rates and New Planets",
+"volume": "547",
+"year": 2026
+},
+{
+"arxiv": "1912.10874",
+"first_author": "HASWELL C.",
+"journal": "Nature Astronomy",
+"page": "408-418",
+"title": "Dispersed Matter Planet Project Discoveries of Ablating Planets Orbiting Nearby Bright Stars",
+"volume": "4",
+"year": 2020
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "STANDING M.R.",
+"journal": "MNRAS",
+"page": "stag370",
+"title": "The Dispersed Matter Planet Project Sample -- Detection limits, Occurrence Rates and New Planets",
+"volume": "547",
+"year": 2026
+},
+{
+"arxiv": "1912.10874",
+"first_author": "HASWELL C.",
+"journal": "Nature Astronomy",
+"page": "408-418",
+"title": "Dispersed Matter Planet Project Discoveries of Ablating Planets Orbiting Nearby Bright Stars",
+"volume": "4",
+"year": 2020
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "STANDING M.R.",
+"journal": "MNRAS",
+"page": "stag370",
+"title": "The Dispersed Matter Planet Project Sample -- Detection limits, Occurrence Rates and New Planets",
+"volume": "547",
+"year": 2026
+},
+{
+"arxiv": "1912.10874",
+"first_author": "HASWELL C.",
+"journal": "Nature Astronomy",
+"page": "408-418",
+"title": "Dispersed Matter Planet Project Discoveries of Ablating Planets Orbiting Nearby Bright Stars",
+"volume": "4",
+"year": 2020
+}
+]
+},
+"DMPP-4 b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "BARNES J.",
+"journal": "MNRAS",
+"page": "5196",
+"title": "DMPP-4: Candidate sub-Neptune mass planets orbiting a naked-eye star",
+"volume": "524",
+"year": 2023
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "BARNES J.",
+"journal": "MNRAS",
+"page": "5196",
+"title": "DMPP-4: Candidate sub-Neptune mass planets orbiting a naked-eye star",
+"volume": "524",
+"year": 2023
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "BARNES J.",
+"journal": "MNRAS",
+"page": "5196",
+"title": "DMPP-4: Candidate sub-Neptune mass planets orbiting a naked-eye star",
+"volume": "524",
+"year": 2023
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "BARNES J.",
+"journal": "MNRAS",
+"page": "5196",
+"title": "DMPP-4: Candidate sub-Neptune mass planets orbiting a naked-eye star",
+"volume": "524",
+"year": 2023
 }
 ]
 },
@@ -1857,6 +2164,142 @@
 "title": "HAT-P-6b: A Hot Jupiter transiting a bright F star",
 "volume": "673",
 "year": 2007
+}
+]
+},
+"HATS-35 b": {
+"distance": [
+{
+"arxiv": "1607.00006",
+"first_author": "de VAL-BORRO M.",
+"journal": "Astron. J.",
+"page": "161",
+"title": "HATS-31b Through HATS-35b: Five Transiting Hot Jupiters Discovered by the HATSouth Survey",
+"volume": "152",
+"year": 2016
+}
+],
+"eccentricity": [
+{
+"arxiv": "1607.00006",
+"first_author": "de VAL-BORRO M.",
+"journal": "Astron. J.",
+"page": "161",
+"title": "HATS-31b Through HATS-35b: Five Transiting Hot Jupiters Discovered by the HATSouth Survey",
+"volume": "152",
+"year": 2016
+}
+],
+"mass": [
+{
+"arxiv": "1607.00006",
+"first_author": "de VAL-BORRO M.",
+"journal": "Astron. J.",
+"page": "161",
+"title": "HATS-31b Through HATS-35b: Five Transiting Hot Jupiters Discovered by the HATSouth Survey",
+"volume": "152",
+"year": 2016
+}
+],
+"orbit": [
+{
+"arxiv": "1607.00006",
+"first_author": "de VAL-BORRO M.",
+"journal": "Astron. J.",
+"page": "161",
+"title": "HATS-31b Through HATS-35b: Five Transiting Hot Jupiters Discovered by the HATSouth Survey",
+"volume": "152",
+"year": 2016
+}
+],
+"period": [
+{
+"arxiv": "1607.00006",
+"first_author": "de VAL-BORRO M.",
+"journal": "Astron. J.",
+"page": "161",
+"title": "HATS-31b Through HATS-35b: Five Transiting Hot Jupiters Discovered by the HATSouth Survey",
+"volume": "152",
+"year": 2016
+}
+],
+"radius": [
+{
+"arxiv": "1607.00006",
+"first_author": "de VAL-BORRO M.",
+"journal": "Astron. J.",
+"page": "161",
+"title": "HATS-31b Through HATS-35b: Five Transiting Hot Jupiters Discovered by the HATSouth Survey",
+"volume": "152",
+"year": 2016
+}
+]
+},
+"HATS-52 b": {
+"distance": [
+{
+"arxiv": "1712.04324",
+"first_author": "HENNING Th.",
+"journal": "Astron. J.",
+"page": "79",
+"title": "HATS-50b through HATS-53b: four transiting hot Jupiters orbiting G-type stars discovered by the HATSouth survey",
+"volume": "155",
+"year": 2017
+}
+],
+"eccentricity": [
+{
+"arxiv": "1712.04324",
+"first_author": "HENNING Th.",
+"journal": "Astron. J.",
+"page": "79",
+"title": "HATS-50b through HATS-53b: four transiting hot Jupiters orbiting G-type stars discovered by the HATSouth survey",
+"volume": "155",
+"year": 2017
+}
+],
+"mass": [
+{
+"arxiv": "1712.04324",
+"first_author": "HENNING Th.",
+"journal": "Astron. J.",
+"page": "79",
+"title": "HATS-50b through HATS-53b: four transiting hot Jupiters orbiting G-type stars discovered by the HATSouth survey",
+"volume": "155",
+"year": 2017
+}
+],
+"orbit": [
+{
+"arxiv": "1712.04324",
+"first_author": "HENNING Th.",
+"journal": "Astron. J.",
+"page": "79",
+"title": "HATS-50b through HATS-53b: four transiting hot Jupiters orbiting G-type stars discovered by the HATSouth survey",
+"volume": "155",
+"year": 2017
+}
+],
+"period": [
+{
+"arxiv": "1712.04324",
+"first_author": "HENNING Th.",
+"journal": "Astron. J.",
+"page": "79",
+"title": "HATS-50b through HATS-53b: four transiting hot Jupiters orbiting G-type stars discovered by the HATSouth survey",
+"volume": "155",
+"year": 2017
+}
+],
+"radius": [
+{
+"arxiv": "1712.04324",
+"first_author": "HENNING Th.",
+"journal": "Astron. J.",
+"page": "79",
+"title": "HATS-50b through HATS-53b: four transiting hot Jupiters orbiting G-type stars discovered by the HATSouth survey",
+"volume": "155",
+"year": 2017
 }
 ]
 },
@@ -3651,6 +4094,142 @@
 }
 ]
 },
+"HD 20794 d": {
+"distance": [
+{
+"arxiv": "1108.3447",
+"first_author": "PEPE F.",
+"journal": "Astron. & Astrophys.",
+"page": "A58",
+"title": "The HARPS search for Earth-like planets in the habitable zone. I. Very low-mass planets around HD 20794, HD 85512, and HD 192310",
+"volume": "534",
+"year": 2011
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "PE\u00d1A P. & JENKINS J.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "Closing the evidence gap: reddemcee, a fast adaptive parallel tempering sampler Next-generation ladder adaptation and evidence estimators for parallel tempering",
+"volume": "in press",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "NARI N.",
+"journal": "Astron. & Astrophys.",
+"page": "A297",
+"title": "Revisiting the multi-planetary system of the nearby star HD 20794. Confirmation of a low-mass planet in the habitable zone of a nearby G-dwarf",
+"volume": "693",
+"year": 2025
+},
+{
+"arxiv": null,
+"first_author": "BASANT R.",
+"journal": "Astron. J.",
+"page": "12",
+"title": "An Integrative Analysis of the Rich Planetary System of the Nearby Star e Eridani: Ideal Targets For Exoplanet Imaging and Biosignature Searches",
+"volume": "164",
+"year": 2022
+},
+{
+"arxiv": "1901.03294",
+"first_author": "COFFINET A.",
+"journal": "Astron. & Astrophys.",
+"page": "A27",
+"title": "New wavelength calibration of the HARPS spectrograph",
+"volume": "629",
+"year": 2019
+},
+{
+"arxiv": "1705.05124",
+"first_author": "FENG F.",
+"journal": "Astron. & Astrophys.",
+"page": "A103",
+"title": "Evidence for at least three planet candidates orbiting HD20794",
+"volume": "605",
+"year": 2017
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "NARI N.",
+"journal": "Astron. & Astrophys.",
+"page": "A297",
+"title": "Revisiting the multi-planetary system of the nearby star HD 20794. Confirmation of a low-mass planet in the habitable zone of a nearby G-dwarf",
+"volume": "693",
+"year": 2025
+},
+{
+"arxiv": null,
+"first_author": "BASANT R.",
+"journal": "Astron. J.",
+"page": "12",
+"title": "An Integrative Analysis of the Rich Planetary System of the Nearby Star e Eridani: Ideal Targets For Exoplanet Imaging and Biosignature Searches",
+"volume": "164",
+"year": 2022
+},
+{
+"arxiv": "1705.05124",
+"first_author": "FENG F.",
+"journal": "Astron. & Astrophys.",
+"page": "A103",
+"title": "Evidence for at least three planet candidates orbiting HD20794",
+"volume": "605",
+"year": 2017
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "PE\u00d1A P. & JENKINS J.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "Closing the evidence gap: reddemcee, a fast adaptive parallel tempering sampler Next-generation ladder adaptation and evidence estimators for parallel tempering",
+"volume": "in press",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "NARI N.",
+"journal": "Astron. & Astrophys.",
+"page": "A297",
+"title": "Revisiting the multi-planetary system of the nearby star HD 20794. Confirmation of a low-mass planet in the habitable zone of a nearby G-dwarf",
+"volume": "693",
+"year": 2025
+},
+{
+"arxiv": null,
+"first_author": "BASANT R.",
+"journal": "Astron. J.",
+"page": "12",
+"title": "An Integrative Analysis of the Rich Planetary System of the Nearby Star e Eridani: Ideal Targets For Exoplanet Imaging and Biosignature Searches",
+"volume": "164",
+"year": 2022
+},
+{
+"arxiv": "1901.03294",
+"first_author": "COFFINET A.",
+"journal": "Astron. & Astrophys.",
+"page": "A27",
+"title": "New wavelength calibration of the HARPS spectrograph",
+"volume": "629",
+"year": 2019
+},
+{
+"arxiv": "1705.05124",
+"first_author": "FENG F.",
+"journal": "Astron. & Astrophys.",
+"page": "A103",
+"title": "Evidence for at least three planet candidates orbiting HD20794",
+"volume": "605",
+"year": 2017
+}
+]
+},
 "HD 217107 b": {
 "eccentricity": [
 {
@@ -5017,6 +5596,101 @@
 }
 ]
 },
+"HD 63433 b": {
+"distance": [
+{
+"arxiv": "2005.00047",
+"first_author": "MANN A.",
+"journal": "Astron. J.",
+"page": "33",
+"title": "TESS Hunt for Young and Maturing Exoplanets (THYME) III: a two-planet system in the 400 Myr Ursa Major Group",
+"volume": "160",
+"year": 2020
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "MALLORQUIN M.",
+"journal": "Astron. & Astrophys.",
+"page": "A163",
+"title": "Dynamical masses of two young transiting sub-Neptunes orbiting HD 63433",
+"volume": "671",
+"year": 2023
+},
+{
+"arxiv": "2005.00047",
+"first_author": "MANN A.",
+"journal": "Astron. J.",
+"page": "33",
+"title": "TESS Hunt for Young and Maturing Exoplanets (THYME) III: a two-planet system in the 400 Myr Ursa Major Group",
+"volume": "160",
+"year": 2020
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "MALLORQUIN M.",
+"journal": "Astron. & Astrophys.",
+"page": "A163",
+"title": "Dynamical masses of two young transiting sub-Neptunes orbiting HD 63433",
+"volume": "671",
+"year": 2023
+}
+],
+"orbit": [
+{
+"arxiv": "2005.00047",
+"first_author": "MANN A.",
+"journal": "Astron. J.",
+"page": "33",
+"title": "TESS Hunt for Young and Maturing Exoplanets (THYME) III: a two-planet system in the 400 Myr Ursa Major Group",
+"volume": "160",
+"year": 2020
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "MALLORQUIN M.",
+"journal": "Astron. & Astrophys.",
+"page": "A163",
+"title": "Dynamical masses of two young transiting sub-Neptunes orbiting HD 63433",
+"volume": "671",
+"year": 2023
+},
+{
+"arxiv": "2005.00047",
+"first_author": "MANN A.",
+"journal": "Astron. J.",
+"page": "33",
+"title": "TESS Hunt for Young and Maturing Exoplanets (THYME) III: a two-planet system in the 400 Myr Ursa Major Group",
+"volume": "160",
+"year": 2020
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "MALLORQUIN M.",
+"journal": "Astron. & Astrophys.",
+"page": "A163",
+"title": "Dynamical masses of two young transiting sub-Neptunes orbiting HD 63433",
+"volume": "671",
+"year": 2023
+},
+{
+"arxiv": "2005.00047",
+"first_author": "MANN A.",
+"journal": "Astron. J.",
+"page": "33",
+"title": "TESS Hunt for Young and Maturing Exoplanets (THYME) III: a two-planet system in the 400 Myr Ursa Major Group",
+"volume": "160",
+"year": 2020
+}
+]
+},
 "HD 63454 b": {
 "eccentricity": [
 {
@@ -6049,6 +6723,119 @@
 }
 ]
 },
+"HIP 67522 b": {
+"distance": [
+{
+"arxiv": "2005.00013",
+"first_author": "RIZZUTO A.",
+"journal": "Astron. J.",
+"page": "33",
+"title": "TESS Hunt for Young and Maturing Exoplanets (THYME) II: A 17 Myr Old Transiting Hot Jupiter in the Sco-Cen Association",
+"volume": "160",
+"year": 2020
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "JAMES H.",
+"journal": "Astron. J.",
+"page": null,
+"title": "Toddlers in Resonance I: low masses and eccentricities of the 17 Myr giant planets HIP 67522 bc from transit timing variations",
+"volume": "submitted",
+"year": 2026
+},
+{
+"arxiv": "2407.04763",
+"first_author": "BARBER M.",
+"journal": "ApJ Letters",
+"page": "L30",
+"title": "TESS Investigation - Demographics of Young Exoplanets (TI-DYE) II: a second giant planet in the 17-Myr system HIP 67522",
+"volume": "973",
+"year": 2024
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "LAVAIL A.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "Atmospheric characterization of HIP 67522 b with VLT/CRIRES+. VLT/CRIRES+ suggests a heavier planet and hints at deuterium fractionation",
+"volume": "in press",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "JAMES H.",
+"journal": "Astron. J.",
+"page": null,
+"title": "Toddlers in Resonance I: low masses and eccentricities of the 17 Myr giant planets HIP 67522 bc from transit timing variations",
+"volume": "submitted",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "THAO P.",
+"journal": "Astron. J.",
+"page": null,
+"title": "The Featherweight Giant: Unraveling the Atmosphere of a 17 Myr Planet with JWST",
+"volume": "accepted",
+"year": 2024
+},
+{
+"arxiv": "2005.00013",
+"first_author": "RIZZUTO A.",
+"journal": "Astron. J.",
+"page": "33",
+"title": "TESS Hunt for Young and Maturing Exoplanets (THYME) II: A 17 Myr Old Transiting Hot Jupiter in the Sco-Cen Association",
+"volume": "160",
+"year": 2020
+}
+],
+"orbit": [
+{
+"arxiv": "2407.04763",
+"first_author": "BARBER M.",
+"journal": "ApJ Letters",
+"page": "L30",
+"title": "TESS Investigation - Demographics of Young Exoplanets (TI-DYE) II: a second giant planet in the 17-Myr system HIP 67522",
+"volume": "973",
+"year": 2024
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "JAMES H.",
+"journal": "Astron. J.",
+"page": null,
+"title": "Toddlers in Resonance I: low masses and eccentricities of the 17 Myr giant planets HIP 67522 bc from transit timing variations",
+"volume": "submitted",
+"year": 2026
+},
+{
+"arxiv": "2407.04763",
+"first_author": "BARBER M.",
+"journal": "ApJ Letters",
+"page": "L30",
+"title": "TESS Investigation - Demographics of Young Exoplanets (TI-DYE) II: a second giant planet in the 17-Myr system HIP 67522",
+"volume": "973",
+"year": 2024
+}
+],
+"radius": [
+{
+"arxiv": "2407.04763",
+"first_author": "BARBER M.",
+"journal": "ApJ Letters",
+"page": "L30",
+"title": "TESS Investigation - Demographics of Young Exoplanets (TI-DYE) II: a second giant planet in the 17-Myr system HIP 67522",
+"volume": "973",
+"year": 2024
+}
+]
+},
 "HIP 67522 c": {
 "distance": [
 {
@@ -6610,6 +7397,155 @@
 "title": "Discovery of two T dwarf companions with the Spitzer space telescope",
 "volume": "654",
 "year": 2007
+}
+]
+},
+"HR 2562 b": {
+"distance": [
+{
+"arxiv": "1608.06660",
+"first_author": "KONOPACKY Q.",
+"journal": "ApJ. Letters",
+"page": "L4",
+"title": "Discovery of a Substellar Companion to the Nearby Debris Disk Host HR 2562",
+"volume": "829",
+"year": 2016
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "ZHANG S.",
+"journal": "Astron. J.",
+"page": "219",
+"title": "Testing the Interaction Between a Substellar Companion and a Debris Disk in the HR 2562 System",
+"volume": "165",
+"year": 2023
+},
+{
+"arxiv": "1911.10569",
+"first_author": "BOWLER B.",
+"journal": "Astron. J.",
+"page": "63",
+"title": "Population-Level Eccentricity Distributions of Imaged Exoplanets and Brown Dwarf Companions: Dynamical Evidence for Distinct Formation Channels",
+"volume": "159",
+"year": 2020
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "GODOY N.",
+"journal": "Astron. & Astrophys.",
+"page": "A185",
+"title": "A new atmospheric characterization of the sub-stellar companion HR 2562 B with JWST/MIRI observations",
+"volume": "689",
+"year": 2024
+},
+{
+"arxiv": null,
+"first_author": "ZHANG S.",
+"journal": "Astron. J.",
+"page": "219",
+"title": "Testing the Interaction Between a Substellar Companion and a Debris Disk in the HR 2562 System",
+"volume": "165",
+"year": 2023
+},
+{
+"arxiv": "1904.05358",
+"first_author": "NIELSEN E.",
+"journal": "Astron. J.",
+"page": "13",
+"title": "The Gemini Planet Imager Exoplanet Survey: Giant Planet and Brown Dwarf Demographics From 10-100 AU",
+"volume": "158",
+"year": 2019
+},
+{
+"arxiv": "1804.04584",
+"first_author": "MAIRE A.-L.",
+"journal": "Astron. & Astrophys.",
+"page": "177",
+"title": "VLT/SPHERE astrometric confirmation and orbital analysis of the brown dwarf companion HR 2562 B",
+"volume": "615",
+"year": 2018
+},
+{
+"arxiv": "1608.06660",
+"first_author": "KONOPACKY Q.",
+"journal": "ApJ. Letters",
+"page": "L4",
+"title": "Discovery of a Substellar Companion to the Nearby Debris Disk Host HR 2562",
+"volume": "829",
+"year": 2016
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "ZHANG S.",
+"journal": "Astron. J.",
+"page": "219",
+"title": "Testing the Interaction Between a Substellar Companion and a Debris Disk in the HR 2562 System",
+"volume": "165",
+"year": 2023
+},
+{
+"arxiv": "1911.10569",
+"first_author": "BOWLER B.",
+"journal": "Astron. J.",
+"page": "63",
+"title": "Population-Level Eccentricity Distributions of Imaged Exoplanets and Brown Dwarf Companions: Dynamical Evidence for Distinct Formation Channels",
+"volume": "159",
+"year": 2020
+},
+{
+"arxiv": "1608.06660",
+"first_author": "KONOPACKY Q.",
+"journal": "ApJ. Letters",
+"page": "L4",
+"title": "Discovery of a Substellar Companion to the Nearby Debris Disk Host HR 2562",
+"volume": "829",
+"year": 2016
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "ZHANG S.",
+"journal": "Astron. J.",
+"page": "219",
+"title": "Testing the Interaction Between a Substellar Companion and a Debris Disk in the HR 2562 System",
+"volume": "165",
+"year": 2023
+},
+{
+"arxiv": "1911.10569",
+"first_author": "BOWLER B.",
+"journal": "Astron. J.",
+"page": "63",
+"title": "Population-Level Eccentricity Distributions of Imaged Exoplanets and Brown Dwarf Companions: Dynamical Evidence for Distinct Formation Channels",
+"volume": "159",
+"year": 2020
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "GODOY N.",
+"journal": "Astron. & Astrophys.",
+"page": "A185",
+"title": "A new atmospheric characterization of the sub-stellar companion HR 2562 B with JWST/MIRI observations",
+"volume": "689",
+"year": 2024
+},
+{
+"arxiv": "2106.14890",
+"first_author": "SUTLIEFF B.",
+"journal": "MNRAS",
+"page": null,
+"title": "High-contrast observations of brown dwarf companion HR 2562 B with the vector Apodizing Phase Plate coronagraph",
+"volume": "in press",
+"year": 2021
 }
 ]
 },
@@ -7736,6 +8672,98 @@
 }
 ]
 },
+"K2-381 b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+]
+},
+"K2-381 c": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "CHRISTIANSEN J.",
+"journal": "Astron. J.",
+"page": "254",
+"title": "Scaling K2. V. Statistical Validation of 60 New Exoplanets From K2 Campaigns 2-18",
+"volume": "163",
+"year": 2022
+}
+]
+},
 "KELT-12 b": {
 "distance": [
 {
@@ -7921,6 +8949,185 @@
 "title": "KELT-14b and KELT-15b: An Independent Discovery of WASP-122b and a New Hot Jupiter",
 "volume": "submitted",
 "year": 2016
+}
+]
+},
+"KELT-18 b": {
+"distance": [
+{
+"arxiv": "1702.01657",
+"first_author": "McLEOD K.",
+"journal": "Astron. J.",
+"page": "263",
+"title": "KELT-18b: Puffy Planet, Hot Host, Probably Perturbed",
+"volume": "153",
+"year": 2017
+}
+],
+"eccentricity": [
+{
+"arxiv": "1702.01657",
+"first_author": "McLEOD K.",
+"journal": "Astron. J.",
+"page": "263",
+"title": "KELT-18b: Puffy Planet, Hot Host, Probably Perturbed",
+"volume": "153",
+"year": 2017
+}
+],
+"mass": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1702.01657",
+"first_author": "McLEOD K.",
+"journal": "Astron. J.",
+"page": "263",
+"title": "KELT-18b: Puffy Planet, Hot Host, Probably Perturbed",
+"volume": "153",
+"year": 2017
+}
+],
+"orbit": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1702.01657",
+"first_author": "McLEOD K.",
+"journal": "Astron. J.",
+"page": "263",
+"title": "KELT-18b: Puffy Planet, Hot Host, Probably Perturbed",
+"volume": "153",
+"year": 2017
+}
+],
+"period": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1702.01657",
+"first_author": "McLEOD K.",
+"journal": "Astron. J.",
+"page": "263",
+"title": "KELT-18b: Puffy Planet, Hot Host, Probably Perturbed",
+"volume": "153",
+"year": 2017
+}
+],
+"radius": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1702.01657",
+"first_author": "McLEOD K.",
+"journal": "Astron. J.",
+"page": "263",
+"title": "KELT-18b: Puffy Planet, Hot Host, Probably Perturbed",
+"volume": "153",
+"year": 2017
+}
+]
+},
+"KELT-20 b": {
+"distance": [
+{
+"arxiv": "1905.10694",
+"first_author": "STASSUN K.",
+"journal": "Astron. J.",
+"page": "138",
+"title": "The Revised TESS Input Catalog and Candidate Target List",
+"volume": "158",
+"year": 2019
+}
+],
+"mass": [
+{
+"arxiv": "1707.01518",
+"first_author": "LUND M.",
+"journal": "Astron. J.",
+"page": "194",
+"title": "KELT-20b: A giant planet with a period of P~ 3.5 days transiting the V~ 7.6 early A star HD 185603",
+"volume": "154",
+"year": 2017
+}
+],
+"orbit": [
+{
+"arxiv": "1905.12491",
+"first_author": "CASASAYAS-BARRIS N.",
+"journal": "Astron. & Astrophys.",
+"page": "A9",
+"title": "Atmospheric characterization of the ultra-hot Jupiter MASCARA-2b/KELT-20b",
+"volume": "628",
+"year": 2019
+},
+{
+"arxiv": "1707.01518",
+"first_author": "LUND M.",
+"journal": "Astron. J.",
+"page": "194",
+"title": "KELT-20b: A giant planet with a period of P~ 3.5 days transiting the V~ 7.6 early A star HD 185603",
+"volume": "154",
+"year": 2017
+}
+],
+"period": [
+{
+"arxiv": "1905.12491",
+"first_author": "CASASAYAS-BARRIS N.",
+"journal": "Astron. & Astrophys.",
+"page": "A9",
+"title": "Atmospheric characterization of the ultra-hot Jupiter MASCARA-2b/KELT-20b",
+"volume": "628",
+"year": 2019
+},
+{
+"arxiv": "1707.01518",
+"first_author": "LUND M.",
+"journal": "Astron. J.",
+"page": "194",
+"title": "KELT-20b: A giant planet with a period of P~ 3.5 days transiting the V~ 7.6 early A star HD 185603",
+"volume": "154",
+"year": 2017
+}
+],
+"radius": [
+{
+"arxiv": "1707.01518",
+"first_author": "LUND M.",
+"journal": "Astron. J.",
+"page": "194",
+"title": "KELT-20b: A giant planet with a period of P~ 3.5 days transiting the V~ 7.6 early A star HD 185603",
+"volume": "154",
+"year": 2017
 }
 ]
 },
@@ -10513,6 +11720,41 @@
 }
 ]
 },
+"Kepler-53 b": {
+"mass": [
+{
+"arxiv": "1208.3499",
+"first_author": "STEFFEN J.",
+"journal": "MNRAS",
+"page": "1077-1087",
+"title": "Transit Timing Observations from Kepler: VII. Confirmation of 27 planets in 13 multiplanet systems via Transit Timing Variations and orbital stability",
+"volume": "428",
+"year": 2013
+}
+],
+"period": [
+{
+"arxiv": "1208.3499",
+"first_author": "STEFFEN J.",
+"journal": "MNRAS",
+"page": "1077-1087",
+"title": "Transit Timing Observations from Kepler: VII. Confirmation of 27 planets in 13 multiplanet systems via Transit Timing Variations and orbital stability",
+"volume": "428",
+"year": 2013
+}
+],
+"radius": [
+{
+"arxiv": "1208.3499",
+"first_author": "STEFFEN J.",
+"journal": "MNRAS",
+"page": "1077-1087",
+"title": "Transit Timing Observations from Kepler: VII. Confirmation of 27 planets in 13 multiplanet systems via Transit Timing Variations and orbital stability",
+"volume": "428",
+"year": 2013
+}
+]
+},
 "Kepler-55 b": {
 "distance": [
 {
@@ -11845,6 +13087,74 @@
 }
 ]
 },
+"NGTS-38 b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "RODEL T.",
+"journal": "MNRAS",
+"page": "stag1061",
+"title": "TIC-65910228 b / NGTS-38 b, a 180 day transiting warm super-Jupiter",
+"volume": "549",
+"year": 2026
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "ROJAS F.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "TIC65910228b: A single-transit discovery of a massive long-period warm Jupiter with TESS",
+"volume": "submitted",
+"year": 2026
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "ROJAS F.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "TIC65910228b: A single-transit discovery of a massive long-period warm Jupiter with TESS",
+"volume": "submitted",
+"year": 2026
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "ROJAS F.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "TIC65910228b: A single-transit discovery of a massive long-period warm Jupiter with TESS",
+"volume": "submitted",
+"year": 2026
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "ROJAS F.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "TIC65910228b: A single-transit discovery of a massive long-period warm Jupiter with TESS",
+"volume": "submitted",
+"year": 2026
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "ROJAS F.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "TIC65910228b: A single-transit discovery of a massive long-period warm Jupiter with TESS",
+"volume": "submitted",
+"year": 2026
+}
+]
+},
 "OGLE-2012-BLG-0563L b": {
 "distance": [
 {
@@ -12040,6 +13350,63 @@
 "title": "Spectroscopic Mass and Host-star Metallicity Measurements for Newly Discovered Microlensing Planet OGLE-2018-BLG-0740Lb",
 "volume": "submitted",
 "year": 2019
+}
+]
+},
+"OGLE-TR-111 b": {
+"distance": [
+{
+"arxiv": "1905.10694",
+"first_author": "STASSUN K.",
+"journal": "Astron. J.",
+"page": "138",
+"title": "The Revised TESS Input Catalog and Candidate Target List",
+"volume": "158",
+"year": 2019
+}
+],
+"mass": [
+{
+"arxiv": "1006.4443",
+"first_author": "SOUTHWORTH J.",
+"journal": "MNRAS",
+"page": "1689",
+"title": "Homogeneous studies of transiting extrasolar planets. III. Additional planets and stellar models",
+"volume": "408",
+"year": 2010
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "PONT F.",
+"journal": "Astron. & Astrophys.",
+"page": "L15",
+"title": "The \"missing link\": a 4-day period transiting exoplanet around OGLE-TR-111.",
+"volume": "426",
+"year": 2004
+}
+],
+"period": [
+{
+"arxiv": "0910.4892",
+"first_author": "PIETRUKOWICZ P.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "Millimagnitude Photometry for Transiting Extrasolar Planetary Candidates. V. Follow-up of 30 OGLE Transits. New Candidates",
+"volume": null,
+"year": 2009
+}
+],
+"radius": [
+{
+"arxiv": "1006.4443",
+"first_author": "SOUTHWORTH J.",
+"journal": "MNRAS",
+"page": "1689",
+"title": "Homogeneous studies of transiting extrasolar planets. III. Additional planets and stellar models",
+"volume": "408",
+"year": 2010
 }
 ]
 },
@@ -12469,6 +13836,146 @@
 }
 ]
 },
+"TIC 393818343 b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "CONZO G. & MORICONI M.",
+"journal": "Res. Notes AAS",
+"page": "53",
+"title": "TOI-6883.01: A Single-transit Planet Candidate Detected from TESS",
+"volume": "8",
+"year": 2024
+},
+{
+"arxiv": "2405.15021v1",
+"first_author": "SGRO L.",
+"journal": "Astron. J.",
+"page": "26",
+"title": "Confirmation and Characterization of the Eccentric, Warm Jupiter TIC 393818343 b with a Network of Citizen Scientists",
+"volume": "168",
+"year": 2024
+},
+{
+"arxiv": null,
+"first_author": "HEIDARI N.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "SOPHIE and TESS characterization of fourteen TESS Objects of Interest: nine planetary systems and five low-mass stellar companions",
+"volume": "accepted",
+"year": 2026
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "HEIDARI N.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "SOPHIE and TESS characterization of fourteen TESS Objects of Interest: nine planetary systems and five low-mass stellar companions",
+"volume": "accepted",
+"year": 2026
+},
+{
+"arxiv": "2405.15021v1",
+"first_author": "SGRO L.",
+"journal": "Astron. J.",
+"page": "26",
+"title": "Confirmation and Characterization of the Eccentric, Warm Jupiter TIC 393818343 b with a Network of Citizen Scientists",
+"volume": "168",
+"year": 2024
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "HEIDARI N.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "SOPHIE and TESS characterization of fourteen TESS Objects of Interest: nine planetary systems and five low-mass stellar companions",
+"volume": "accepted",
+"year": 2026
+},
+{
+"arxiv": "2405.15021v1",
+"first_author": "SGRO L.",
+"journal": "Astron. J.",
+"page": "26",
+"title": "Confirmation and Characterization of the Eccentric, Warm Jupiter TIC 393818343 b with a Network of Citizen Scientists",
+"volume": "168",
+"year": 2024
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "HEIDARI N.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "SOPHIE and TESS characterization of fourteen TESS Objects of Interest: nine planetary systems and five low-mass stellar companions",
+"volume": "accepted",
+"year": 2026
+},
+{
+"arxiv": "2405.15021v1",
+"first_author": "SGRO L.",
+"journal": "Astron. J.",
+"page": "26",
+"title": "Confirmation and Characterization of the Eccentric, Warm Jupiter TIC 393818343 b with a Network of Citizen Scientists",
+"volume": "168",
+"year": 2024
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "HEIDARI N.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "SOPHIE and TESS characterization of fourteen TESS Objects of Interest: nine planetary systems and five low-mass stellar companions",
+"volume": "accepted",
+"year": 2026
+},
+{
+"arxiv": "2405.15021v1",
+"first_author": "SGRO L.",
+"journal": "Astron. J.",
+"page": "26",
+"title": "Confirmation and Characterization of the Eccentric, Warm Jupiter TIC 393818343 b with a Network of Citizen Scientists",
+"volume": "168",
+"year": 2024
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "HEIDARI N.",
+"journal": "Astron. & Astrophys.",
+"page": null,
+"title": "SOPHIE and TESS characterization of fourteen TESS Objects of Interest: nine planetary systems and five low-mass stellar companions",
+"volume": "accepted",
+"year": 2026
+},
+{
+"arxiv": "2405.15021v1",
+"first_author": "SGRO L.",
+"journal": "Astron. J.",
+"page": "26",
+"title": "Confirmation and Characterization of the Eccentric, Warm Jupiter TIC 393818343 b with a Network of Citizen Scientists",
+"volume": "168",
+"year": 2024
+},
+{
+"arxiv": null,
+"first_author": "CONZO G. & MORICONI M.",
+"journal": "Res. Notes AAS",
+"page": "53",
+"title": "TOI-6883.01: A Single-transit Planet Candidate Detected from TESS",
+"volume": "8",
+"year": 2024
+}
+]
+},
 "TOI-1136 e": {
 "distance": [
 {
@@ -12827,6 +14334,30 @@
 "title": "TOI-1338: TESS' First Transiting Circumbinary Planet",
 "volume": "159",
 "year": 2020
+}
+]
+},
+"TOI-1346 c": {
+"period": [
+{
+"arxiv": null,
+"first_author": "GOMEZ BARRIENTOS J.",
+"journal": "Astron. J.",
+"page": "148",
+"title": "Validation of TESS Planet Candidates with Multi-Color Transit Photometry and TRICERATOPS+",
+"volume": "170",
+"year": 2025
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "GOMEZ BARRIENTOS J.",
+"journal": "Astron. J.",
+"page": "148",
+"title": "Validation of TESS Planet Candidates with Multi-Color Transit Photometry and TRICERATOPS+",
+"volume": "170",
+"year": 2025
 }
 ]
 },
@@ -13274,6 +14805,119 @@
 }
 ]
 },
+"TOI-1696 b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "MORI M.",
+"journal": "Astron. J.",
+"page": "298",
+"title": "TOI-1696: a nearby M4 dwarf with a 3R\u2295 planet in the Neptunian desert",
+"volume": "163",
+"year": 2022
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "MORI M.",
+"journal": "Astron. J.",
+"page": "298",
+"title": "TOI-1696: a nearby M4 dwarf with a 3R\u2295 planet in the Neptunian desert",
+"volume": "163",
+"year": 2022
+},
+{
+"arxiv": null,
+"first_author": "BEARD C.",
+"journal": "Astron. J.",
+"page": "286",
+"title": "TOI-1696 and TOI-2136: Constraining the Masses of Two Mini-Neptunes with HPF",
+"volume": "163",
+"year": 2022
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "MORI M.",
+"journal": "Astron. J.",
+"page": "298",
+"title": "TOI-1696: a nearby M4 dwarf with a 3R\u2295 planet in the Neptunian desert",
+"volume": "163",
+"year": 2022
+},
+{
+"arxiv": null,
+"first_author": "BEARD C.",
+"journal": "Astron. J.",
+"page": "286",
+"title": "TOI-1696 and TOI-2136: Constraining the Masses of Two Mini-Neptunes with HPF",
+"volume": "163",
+"year": 2022
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "MORI M.",
+"journal": "Astron. J.",
+"page": "298",
+"title": "TOI-1696: a nearby M4 dwarf with a 3R\u2295 planet in the Neptunian desert",
+"volume": "163",
+"year": 2022
+},
+{
+"arxiv": null,
+"first_author": "BEARD C.",
+"journal": "Astron. J.",
+"page": "286",
+"title": "TOI-1696 and TOI-2136: Constraining the Masses of Two Mini-Neptunes with HPF",
+"volume": "163",
+"year": 2022
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "MORI M.",
+"journal": "Astron. J.",
+"page": "298",
+"title": "TOI-1696: a nearby M4 dwarf with a 3R\u2295 planet in the Neptunian desert",
+"volume": "163",
+"year": 2022
+},
+{
+"arxiv": null,
+"first_author": "BEARD C.",
+"journal": "Astron. J.",
+"page": "286",
+"title": "TOI-1696 and TOI-2136: Constraining the Masses of Two Mini-Neptunes with HPF",
+"volume": "163",
+"year": 2022
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "MORI M.",
+"journal": "Astron. J.",
+"page": "298",
+"title": "TOI-1696: a nearby M4 dwarf with a 3R\u2295 planet in the Neptunian desert",
+"volume": "163",
+"year": 2022
+},
+{
+"arxiv": null,
+"first_author": "BEARD C.",
+"journal": "Astron. J.",
+"page": "286",
+"title": "TOI-1696 and TOI-2136: Constraining the Masses of Two Mini-Neptunes with HPF",
+"volume": "163",
+"year": 2022
+}
+]
+},
 "TOI-1752 c": {
 "distance": [
 {
@@ -13411,6 +15055,110 @@
 "page": "76",
 "title": "TOI-1801 b: A temperate mini-Neptune around a young M0.5 dwarf",
 "volume": "680",
+"year": 2023
+}
+]
+},
+"TOI-181 b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "MISTRY P.",
+"journal": "MNRAS",
+"page": "1066",
+"title": "VaTEST I: Validation of Sub-Saturn Exoplanet TOI-181b in Narrow Orbit from its Host Star",
+"volume": "521",
+"year": 2023
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "MISTRY P.",
+"journal": "MNRAS",
+"page": "1066",
+"title": "VaTEST I: Validation of Sub-Saturn Exoplanet TOI-181b in Narrow Orbit from its Host Star",
+"volume": "521",
+"year": 2023
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "ESPINIZA-RETAMAL J.",
+"journal": "Astron. J.",
+"page": "57",
+"title": "POSEIDON I: The Dynamical Origins of Transiting Neptunes",
+"volume": "172",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MISTRY P.",
+"journal": "MNRAS",
+"page": "1066",
+"title": "VaTEST I: Validation of Sub-Saturn Exoplanet TOI-181b in Narrow Orbit from its Host Star",
+"volume": "521",
+"year": 2023
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "ESPINIZA-RETAMAL J.",
+"journal": "Astron. J.",
+"page": "57",
+"title": "POSEIDON I: The Dynamical Origins of Transiting Neptunes",
+"volume": "172",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MISTRY P.",
+"journal": "MNRAS",
+"page": "1066",
+"title": "VaTEST I: Validation of Sub-Saturn Exoplanet TOI-181b in Narrow Orbit from its Host Star",
+"volume": "521",
+"year": 2023
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "ESPINIZA-RETAMAL J.",
+"journal": "Astron. J.",
+"page": "57",
+"title": "POSEIDON I: The Dynamical Origins of Transiting Neptunes",
+"volume": "172",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MISTRY P.",
+"journal": "MNRAS",
+"page": "1066",
+"title": "VaTEST I: Validation of Sub-Saturn Exoplanet TOI-181b in Narrow Orbit from its Host Star",
+"volume": "521",
+"year": 2023
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "ESPINIZA-RETAMAL J.",
+"journal": "Astron. J.",
+"page": "57",
+"title": "POSEIDON I: The Dynamical Origins of Transiting Neptunes",
+"volume": "172",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MISTRY P.",
+"journal": "MNRAS",
+"page": "1066",
+"title": "VaTEST I: Validation of Sub-Saturn Exoplanet TOI-181b in Narrow Orbit from its Host Star",
+"volume": "521",
 "year": 2023
 }
 ]
@@ -14068,6 +15816,110 @@
 }
 ]
 },
+"TOI-201 d": {
+"distance": [
+{
+"arxiv": "2103.02685",
+"first_author": "HOBSON M.",
+"journal": "Astron. J.",
+"page": "235",
+"title": "A transiting warm giant planet around the young active star TOI-201",
+"volume": "161",
+"year": 2021
+}
+],
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "JONES M.",
+"journal": "Nature",
+"page": "614",
+"title": "A eccentric brown dwarf coplanar to a warm Jupiter and a hot super Earth",
+"volume": "654",
+"year": 2026
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "JONES M.",
+"journal": "Nature",
+"page": "614",
+"title": "A eccentric brown dwarf coplanar to a warm Jupiter and a hot super Earth",
+"volume": "654",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MACIEJEWSKI G. & LOBODA W.",
+"journal": "ApJ Lett",
+"page": "L63",
+"title": "A Transiting Giant on a 7.7-Year Orbit Revealed by TTVs in the TOI-201 System",
+"volume": "988",
+"year": 2025
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "JONES M.",
+"journal": "Nature",
+"page": "614",
+"title": "A eccentric brown dwarf coplanar to a warm Jupiter and a hot super Earth",
+"volume": "654",
+"year": 2026
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "JONES M.",
+"journal": "Nature",
+"page": "614",
+"title": "A eccentric brown dwarf coplanar to a warm Jupiter and a hot super Earth",
+"volume": "654",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MIRELES I.",
+"journal": "TESS Science Conference III",
+"page": null,
+"title": "Three new planets in two dynamically excited TESS warm Jupiter systems",
+"volume": "1.15",
+"year": 2024
+},
+{
+"arxiv": null,
+"first_author": "MIRELES I.",
+"journal": "242nd Meeting of the American Astronomical Society",
+"page": "312.06",
+"title": "TOI-201 c and TOI-1670 d: two new planets in warm Jupiter systems discovered by TESS",
+"volume": "5",
+"year": 2023
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "JONES M.",
+"journal": "Nature",
+"page": "614",
+"title": "A eccentric brown dwarf coplanar to a warm Jupiter and a hot super Earth",
+"volume": "654",
+"year": 2026
+},
+{
+"arxiv": null,
+"first_author": "MIRELES I.",
+"journal": "242nd Meeting of the American Astronomical Society",
+"page": "312.06",
+"title": "TOI-201 c and TOI-1670 d: two new planets in warm Jupiter systems discovered by TESS",
+"volume": "5",
+"year": 2023
+}
+]
+},
 "TOI-2048 b": {
 "distance": [
 {
@@ -14597,6 +16449,74 @@
 "title": "The TESS Grand Unified Hot Jupiter Survey. II. Twenty New Giant Planets",
 "volume": "265",
 "year": 2023
+}
+]
+},
+"TOI-3071 b": {
+"distance": [
+{
+"arxiv": "2406.12996v1",
+"first_author": "HACKER A.",
+"journal": "MNRAS",
+"page": "1612",
+"title": "TOI-2374 b and TOI-3071 b: two metal-rich sub-Saturns well within the Neptunian desert",
+"volume": "532",
+"year": 2024
+}
+],
+"eccentricity": [
+{
+"arxiv": "2406.12996v1",
+"first_author": "HACKER A.",
+"journal": "MNRAS",
+"page": "1612",
+"title": "TOI-2374 b and TOI-3071 b: two metal-rich sub-Saturns well within the Neptunian desert",
+"volume": "532",
+"year": 2024
+}
+],
+"mass": [
+{
+"arxiv": "2406.12996v1",
+"first_author": "HACKER A.",
+"journal": "MNRAS",
+"page": "1612",
+"title": "TOI-2374 b and TOI-3071 b: two metal-rich sub-Saturns well within the Neptunian desert",
+"volume": "532",
+"year": 2024
+}
+],
+"orbit": [
+{
+"arxiv": "2406.12996v1",
+"first_author": "HACKER A.",
+"journal": "MNRAS",
+"page": "1612",
+"title": "TOI-2374 b and TOI-3071 b: two metal-rich sub-Saturns well within the Neptunian desert",
+"volume": "532",
+"year": 2024
+}
+],
+"period": [
+{
+"arxiv": "2406.12996v1",
+"first_author": "HACKER A.",
+"journal": "MNRAS",
+"page": "1612",
+"title": "TOI-2374 b and TOI-3071 b: two metal-rich sub-Saturns well within the Neptunian desert",
+"volume": "532",
+"year": 2024
+}
+],
+"radius": [
+{
+"arxiv": "2406.12996v1",
+"first_author": "HACKER A.",
+"journal": "MNRAS",
+"page": "1612",
+"title": "TOI-2374 b and TOI-3071 b: two metal-rich sub-Saturns well within the Neptunian desert",
+"volume": "532",
+"year": 2024
 }
 ]
 },
@@ -15338,6 +17258,87 @@
 "title": "Eleven New Transiting Brown Dwarfs and Very-low-mass Stars from TESS",
 "volume": "170",
 "year": 2025
+}
+]
+},
+"TOI-5916 b": {
+"distance": [
+{
+"arxiv": "1905.10694",
+"first_author": "STASSUN K.",
+"journal": "Astron. J.",
+"page": "138",
+"title": "The Revised TESS Input Catalog and Candidate Target List",
+"volume": "158",
+"year": 2019
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "ROSS G.",
+"journal": "MNRAS",
+"page": "5160-5177",
+"title": "DEATHSTAR: a system for confirming planets and identifying false-positive signals in TESS data using ground-based time-domain surveys",
+"volume": "528",
+"year": 2024
+}
+]
+},
+"TOI-615 b": {
+"eccentricity": [
+{
+"arxiv": null,
+"first_author": "PSARIDI A.",
+"journal": "Astron. & Astrophys.",
+"page": "A39",
+"title": "Three Saturn-mass planets transiting F-type stars revealed with TESS and HARPS. TOI-615b, TOI-622b, and TOI-2641b",
+"volume": "675",
+"year": 2023
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "PSARIDI A.",
+"journal": "Astron. & Astrophys.",
+"page": "A39",
+"title": "Three Saturn-mass planets transiting F-type stars revealed with TESS and HARPS. TOI-615b, TOI-622b, and TOI-2641b",
+"volume": "675",
+"year": 2023
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "PSARIDI A.",
+"journal": "Astron. & Astrophys.",
+"page": "A39",
+"title": "Three Saturn-mass planets transiting F-type stars revealed with TESS and HARPS. TOI-615b, TOI-622b, and TOI-2641b",
+"volume": "675",
+"year": 2023
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "PSARIDI A.",
+"journal": "Astron. & Astrophys.",
+"page": "A39",
+"title": "Three Saturn-mass planets transiting F-type stars revealed with TESS and HARPS. TOI-615b, TOI-622b, and TOI-2641b",
+"volume": "675",
+"year": 2023
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "PSARIDI A.",
+"journal": "Astron. & Astrophys.",
+"page": "A39",
+"title": "Three Saturn-mass planets transiting F-type stars revealed with TESS and HARPS. TOI-615b, TOI-622b, and TOI-2641b",
+"volume": "675",
+"year": 2023
 }
 ]
 },
@@ -16245,6 +18246,72 @@
 "title": "WASP-South transiting exoplanets: WASP-130b, WASP-131b, WASP-132b, WASP-139b, WASP-140b, WASP-141b & WASP-142b",
 "volume": "465",
 "year": 2017
+}
+]
+},
+"WASP-135 b": {
+"distance": [
+{
+"arxiv": "1511.05954",
+"first_author": "SPAKE J.",
+"journal": "PASP",
+"page": "024401",
+"title": "WASP-135b: a highly irradiated, inflated hot Jupiter orbiting a G5V star",
+"volume": "128",
+"year": 2015
+}
+],
+"eccentricity": [
+{
+"arxiv": "1511.05954",
+"first_author": "SPAKE J.",
+"journal": "PASP",
+"page": "024401",
+"title": "WASP-135b: a highly irradiated, inflated hot Jupiter orbiting a G5V star",
+"volume": "128",
+"year": 2015
+}
+],
+"orbit": [
+{
+"arxiv": "1511.05954",
+"first_author": "SPAKE J.",
+"journal": "PASP",
+"page": "024401",
+"title": "WASP-135b: a highly irradiated, inflated hot Jupiter orbiting a G5V star",
+"volume": "128",
+"year": 2015
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "KATE TORRES K.",
+"journal": "JAAVSO",
+"page": null,
+"title": "Three New Light Curves and Updated Transit Timings of WASP-135 b",
+"volume": "52",
+"year": 2025
+},
+{
+"arxiv": "1511.05954",
+"first_author": "SPAKE J.",
+"journal": "PASP",
+"page": "024401",
+"title": "WASP-135b: a highly irradiated, inflated hot Jupiter orbiting a G5V star",
+"volume": "128",
+"year": 2015
+}
+],
+"radius": [
+{
+"arxiv": "1511.05954",
+"first_author": "SPAKE J.",
+"journal": "PASP",
+"page": "024401",
+"title": "WASP-135b: a highly irradiated, inflated hot Jupiter orbiting a G5V star",
+"volume": "128",
+"year": 2015
 }
 ]
 },
@@ -17991,6 +20058,183 @@
 }
 ]
 },
+"WASP-94 A b": {
+"eccentricity": [
+{
+"arxiv": "1409.7566",
+"first_author": "NEVEU-VANMALLE M.",
+"journal": "Astron. & Astrophys.",
+"page": "A49",
+"title": "WASP-94 A and B planets: hot-Jupiter cousins in a twin-star system",
+"volume": "572",
+"year": 2014
+}
+],
+"mass": [
+{
+"arxiv": "1409.7566",
+"first_author": "NEVEU-VANMALLE M.",
+"journal": "Astron. & Astrophys.",
+"page": "A49",
+"title": "WASP-94 A and B planets: hot-Jupiter cousins in a twin-star system",
+"volume": "572",
+"year": 2014
+}
+],
+"orbit": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1409.7566",
+"first_author": "NEVEU-VANMALLE M.",
+"journal": "Astron. & Astrophys.",
+"page": "A49",
+"title": "WASP-94 A and B planets: hot-Jupiter cousins in a twin-star system",
+"volume": "572",
+"year": 2014
+}
+],
+"period": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1409.7566",
+"first_author": "NEVEU-VANMALLE M.",
+"journal": "Astron. & Astrophys.",
+"page": "A49",
+"title": "WASP-94 A and B planets: hot-Jupiter cousins in a twin-star system",
+"volume": "572",
+"year": 2014
+}
+],
+"radius": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1409.7566",
+"first_author": "NEVEU-VANMALLE M.",
+"journal": "Astron. & Astrophys.",
+"page": "A49",
+"title": "WASP-94 A and B planets: hot-Jupiter cousins in a twin-star system",
+"volume": "572",
+"year": 2014
+}
+]
+},
+"WASP-95 b": {
+"eccentricity": [
+{
+"arxiv": "1310.5630",
+"first_author": "HELLIER C.",
+"journal": "MNRAS",
+"page": "Issue 3",
+"title": "Transiting hot Jupiters from WASP-South, Euler and TRAPPIST: WASP-95b to WASP-101b",
+"volume": "440",
+"year": 2013
+}
+],
+"mass": [
+{
+"arxiv": "2109.11366",
+"first_author": "SAHA S. & SENGUPTA S.",
+"journal": "Astron. J.",
+"page": "221",
+"title": "Critical Analysis of TESS Transit Photometric Data: Improved Physical Properties for Five Exoplanets",
+"volume": "162",
+"year": 2021
+},
+{
+"arxiv": "1310.5630",
+"first_author": "HELLIER C.",
+"journal": "MNRAS",
+"page": "Issue 3",
+"title": "Transiting hot Jupiters from WASP-South, Euler and TRAPPIST: WASP-95b to WASP-101b",
+"volume": "440",
+"year": 2013
+}
+],
+"orbit": [
+{
+"arxiv": "2109.11366",
+"first_author": "SAHA S. & SENGUPTA S.",
+"journal": "Astron. J.",
+"page": "221",
+"title": "Critical Analysis of TESS Transit Photometric Data: Improved Physical Properties for Five Exoplanets",
+"volume": "162",
+"year": 2021
+},
+{
+"arxiv": "1310.5630",
+"first_author": "HELLIER C.",
+"journal": "MNRAS",
+"page": "Issue 3",
+"title": "Transiting hot Jupiters from WASP-South, Euler and TRAPPIST: WASP-95b to WASP-101b",
+"volume": "440",
+"year": 2013
+}
+],
+"period": [
+{
+"arxiv": "2109.11366",
+"first_author": "SAHA S. & SENGUPTA S.",
+"journal": "Astron. J.",
+"page": "221",
+"title": "Critical Analysis of TESS Transit Photometric Data: Improved Physical Properties for Five Exoplanets",
+"volume": "162",
+"year": 2021
+},
+{
+"arxiv": "1310.5630",
+"first_author": "HELLIER C.",
+"journal": "MNRAS",
+"page": "Issue 3",
+"title": "Transiting hot Jupiters from WASP-South, Euler and TRAPPIST: WASP-95b to WASP-101b",
+"volume": "440",
+"year": 2013
+}
+],
+"radius": [
+{
+"arxiv": "2109.11366",
+"first_author": "SAHA S. & SENGUPTA S.",
+"journal": "Astron. J.",
+"page": "221",
+"title": "Critical Analysis of TESS Transit Photometric Data: Improved Physical Properties for Five Exoplanets",
+"volume": "162",
+"year": 2021
+},
+{
+"arxiv": "1310.5630",
+"first_author": "HELLIER C.",
+"journal": "MNRAS",
+"page": "Issue 3",
+"title": "Transiting hot Jupiters from WASP-South, Euler and TRAPPIST: WASP-95b to WASP-101b",
+"volume": "440",
+"year": 2013
+}
+]
+},
 "WD 1856+534 b": {
 "distance": [
 {
@@ -18288,6 +20532,74 @@
 }
 ]
 },
+"XO-2 N b": {
+"distance": [
+{
+"arxiv": null,
+"first_author": "BURKE Ch.",
+"journal": "ApJ.",
+"page": "2115",
+"title": "XO-2b: Transiting Hot Jupiter in a Metal-rich Common Proper Motion Binary",
+"volume": "671",
+"year": 2007
+}
+],
+"eccentricity": [
+{
+"arxiv": "1110.6136",
+"first_author": "NARITA N.",
+"journal": "PASJ",
+"page": "L67",
+"title": "XO-2b: a Prograde Planet with a Negligible Eccentricity, and an Additional Radial Velocity Variation",
+"volume": "63",
+"year": 2011
+}
+],
+"mass": [
+{
+"arxiv": "1110.6136",
+"first_author": "NARITA N.",
+"journal": "PASJ",
+"page": "L67",
+"title": "XO-2b: a Prograde Planet with a Negligible Eccentricity, and an Additional Radial Velocity Variation",
+"volume": "63",
+"year": 2011
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "BURKE Ch.",
+"journal": "ApJ.",
+"page": "2115",
+"title": "XO-2b: Transiting Hot Jupiter in a Metal-rich Common Proper Motion Binary",
+"volume": "671",
+"year": 2007
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "BURKE Ch.",
+"journal": "ApJ.",
+"page": "2115",
+"title": "XO-2b: Transiting Hot Jupiter in a Metal-rich Common Proper Motion Binary",
+"volume": "671",
+"year": 2007
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "BURKE Ch.",
+"journal": "ApJ.",
+"page": "2115",
+"title": "XO-2b: Transiting Hot Jupiter in a Metal-rich Common Proper Motion Binary",
+"volume": "671",
+"year": 2007
+}
+]
+},
 "XO-5 b": {
 "distance": [
 {
@@ -18342,6 +20654,205 @@
 "title": "Refining Parameters of the XO-5 Planetary System with High-Precision Transit Photometry",
 "volume": "61",
 "year": 2011
+}
+]
+},
+"XO-6 b": {
+"distance": [
+{
+"arxiv": "1612.02776",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "94",
+"title": "Discovery of XO-6b: a hot Jupiter transiting a fast rotating F5 star on an oblique orbit",
+"volume": "153",
+"year": 2016
+}
+],
+"eccentricity": [
+{
+"arxiv": "1612.02776",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "94",
+"title": "Discovery of XO-6b: a hot Jupiter transiting a fast rotating F5 star on an oblique orbit",
+"volume": "153",
+"year": 2016
+}
+],
+"mass": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1612.02776",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "94",
+"title": "Discovery of XO-6b: a hot Jupiter transiting a fast rotating F5 star on an oblique orbit",
+"volume": "153",
+"year": 2016
+}
+],
+"orbit": [
+{
+"arxiv": "1612.02776",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "94",
+"title": "Discovery of XO-6b: a hot Jupiter transiting a fast rotating F5 star on an oblique orbit",
+"volume": "153",
+"year": 2016
+}
+],
+"period": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1612.02776",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "94",
+"title": "Discovery of XO-6b: a hot Jupiter transiting a fast rotating F5 star on an oblique orbit",
+"volume": "153",
+"year": 2016
+}
+],
+"radius": [
+{
+"arxiv": "2407.20846v1",
+"first_author": "SAHA S.",
+"journal": "Apj Suppl",
+"page": "13",
+"title": "Precise Transit Photometry Using TESS II: Revisiting 28 Additional Transiting Systems With Updated Physical Properties",
+"volume": "274",
+"year": 2024
+},
+{
+"arxiv": "1612.02776",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "94",
+"title": "Discovery of XO-6b: a hot Jupiter transiting a fast rotating F5 star on an oblique orbit",
+"volume": "153",
+"year": 2016
+}
+]
+},
+"XO-7 b": {
+"distance": [
+{
+"arxiv": "1912.02821",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "44",
+"title": "XO-7 b: A transiting hot Jupiter with a massive companion on a wide orbit",
+"volume": "159",
+"year": 2020
+}
+],
+"eccentricity": [
+{
+"arxiv": "1912.02821",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "44",
+"title": "XO-7 b: A transiting hot Jupiter with a massive companion on a wide orbit",
+"volume": "159",
+"year": 2020
+}
+],
+"mass": [
+{
+"arxiv": null,
+"first_author": "GARAI Z.",
+"journal": "MNRAS",
+"page": "3474",
+"title": "Search for the wide-orbit massive companion of XO-7b in the follow-up radial-velocity and transit-timing data: no significant clues",
+"volume": "527",
+"year": 2024
+},
+{
+"arxiv": "1912.02821",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "44",
+"title": "XO-7 b: A transiting hot Jupiter with a massive companion on a wide orbit",
+"volume": "159",
+"year": 2020
+}
+],
+"orbit": [
+{
+"arxiv": null,
+"first_author": "GARAI Z.",
+"journal": "MNRAS",
+"page": "3474",
+"title": "Search for the wide-orbit massive companion of XO-7b in the follow-up radial-velocity and transit-timing data: no significant clues",
+"volume": "527",
+"year": 2024
+},
+{
+"arxiv": "1912.02821",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "44",
+"title": "XO-7 b: A transiting hot Jupiter with a massive companion on a wide orbit",
+"volume": "159",
+"year": 2020
+}
+],
+"period": [
+{
+"arxiv": null,
+"first_author": "GARAI Z.",
+"journal": "MNRAS",
+"page": "3474",
+"title": "Search for the wide-orbit massive companion of XO-7b in the follow-up radial-velocity and transit-timing data: no significant clues",
+"volume": "527",
+"year": 2024
+},
+{
+"arxiv": "1912.02821",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "44",
+"title": "XO-7 b: A transiting hot Jupiter with a massive companion on a wide orbit",
+"volume": "159",
+"year": 2020
+}
+],
+"radius": [
+{
+"arxiv": null,
+"first_author": "GARAI Z.",
+"journal": "MNRAS",
+"page": "3474",
+"title": "Search for the wide-orbit massive companion of XO-7b in the follow-up radial-velocity and transit-timing data: no significant clues",
+"volume": "527",
+"year": 2024
+},
+{
+"arxiv": "1912.02821",
+"first_author": "CROUZET N.",
+"journal": "Astron. J.",
+"page": "44",
+"title": "XO-7 b: A transiting hot Jupiter with a massive companion on a wide orbit",
+"volume": "159",
+"year": 2020
 }
 ]
 },
@@ -19211,5 +21722,297 @@
 }
 ]
 }
+},
+"read_at": {
+"1RXS J160929.1-210524 b": "2026-10-20",
+"2MASS J03590986+2009361 b": "2026-10-20",
+"51 Peg b": "2026-10-19",
+"BEBOP-3 b": "2026-10-20",
+"COCONUTS-2 b": "2026-10-20",
+"CoRoT-13 b": "2026-10-19",
+"CoRoT-18 b": "2026-10-20",
+"CoRoT-20 b": "2026-10-20",
+"CoRoT-5 b": "2026-10-20",
+"CoRoT-9 b": "2026-10-20",
+"DMPP-2 b": "2026-10-19",
+"DMPP-4 b": "2026-10-19",
+"GJ 1002 c": "2026-10-20",
+"GJ 1061 d": "2026-10-20",
+"GJ 160.2 b": "2026-10-20",
+"GJ 229 b": "2026-10-20",
+"GJ 357 b": "2026-10-20",
+"GJ 3929 c": "2026-10-20",
+"GJ 436 b": "2026-10-20",
+"GJ 504 b": "2026-10-20",
+"GJ 806 c": "2026-10-20",
+"GJ 876 b": "2026-10-20",
+"GJ 876 c": "2026-10-20",
+"GJ 896 A b": "2026-10-20",
+"Gaia-1 b": "2026-10-20",
+"Gliese 48 b": "2026-10-20",
+"HAT-P-13 b": "2026-10-20",
+"HAT-P-14 b": "2026-10-20",
+"HAT-P-34 b": "2026-10-20",
+"HAT-P-43 b": "2026-10-20",
+"HAT-P-6 b": "2026-10-20",
+"HATS-35 b": "2026-10-19",
+"HATS-52 b": "2026-10-19",
+"HATS-71 b": "2026-10-20",
+"HD 102329 b": "2026-10-20",
+"HD 103891 b": "2026-10-20",
+"HD 113337 b": "2026-10-20",
+"HD 113337 c": "2026-10-20",
+"HD 118203 c": "2026-10-20",
+"HD 125390 b": "2026-10-20",
+"HD 125612 b": "2026-10-20",
+"HD 127195 b": "2026-10-20",
+"HD 128311 c": "2026-10-20",
+"HD 134060 c": "2026-10-20",
+"HD 134606 c": "2026-10-20",
+"HD 136118 b": "2026-10-20",
+"HD 13808 b": "2026-10-20",
+"HD 149026 b": "2026-10-20",
+"HD 154672 b": "2026-10-20",
+"HD 160691 e": "2026-10-20",
+"HD 164922 d": "2026-10-20",
+"HD 175167 b": "2026-10-20",
+"HD 181433 d": "2026-10-20",
+"HD 183263 c": "2026-10-20",
+"HD 183579 b": "2026-10-20",
+"HD 196885 A b": "2026-10-20",
+"HD 202772 A b": "2026-10-20",
+"HD 206893 b": "2026-10-20",
+"HD 207897 b": "2026-10-20",
+"HD 20794 d": "2026-10-19",
+"HD 217107 b": "2026-10-20",
+"HD 219134 b": "2026-10-20",
+"HD 219134 c": "2026-10-20",
+"HD 219134 f": "2026-10-20",
+"HD 219134 h": "2026-10-20",
+"HD 231701 b": "2026-10-20",
+"HD 24064 b": "2026-10-20",
+"HD 285507 b": "2026-10-20",
+"HD 285968 b": "2026-10-20",
+"HD 31527 d": "2026-10-20",
+"HD 330075 b": "2026-10-20",
+"HD 33283 b": "2026-10-20",
+"HD 38529 b": "2026-10-20",
+"HD 38529 c": "2026-10-20",
+"HD 39091 b": "2026-10-20",
+"HD 41004 B b": "2026-10-20",
+"HD 4308 b": "2026-10-20",
+"HD 47186 c": "2026-10-20",
+"HD 5319 b": "2026-10-20",
+"HD 60532 c": "2026-10-20",
+"HD 63433 b": "2026-10-19",
+"HD 63454 b": "2026-10-20",
+"HD 66428 b": "2026-10-20",
+"HD 66428 c": "2026-10-20",
+"HD 69830 d": "2026-10-20",
+"HD 715 b": "2026-10-20",
+"HD 73344 c": "2026-10-20",
+"HD 77338 b": "2026-10-20",
+"HD 79498 b": "2026-10-20",
+"HD 86081 b": "2026-10-20",
+"HD 93385 d": "2026-10-20",
+"HD 9446 c": "2026-10-20",
+"HD 95338 b": "2026-10-20",
+"HIP 105854 b": "2026-10-20",
+"HIP 116454 b": "2026-10-20",
+"HIP 41378 b": "2026-10-20",
+"HIP 41378 d": "2026-10-20",
+"HIP 41378 e": "2026-10-20",
+"HIP 67522 b": "2026-10-19",
+"HIP 67522 c": "2026-10-20",
+"HIP 78530 b": "2026-10-20",
+"HIP 8152 b": "2026-10-20",
+"HIP 8152 c": "2026-10-20",
+"HIP 97166 b": "2026-10-20",
+"HN Peg b": "2026-10-20",
+"HR 2562 b": "2026-10-19",
+"K2-105 b": "2026-10-20",
+"K2-184 b": "2026-10-20",
+"K2-19 c": "2026-10-20",
+"K2-21 b": "2026-10-20",
+"K2-21 c": "2026-10-20",
+"K2-24 b": "2026-10-20",
+"K2-292 b": "2026-10-20",
+"K2-3 b": "2026-10-20",
+"K2-3 c": "2026-10-20",
+"K2-3 d": "2026-10-20",
+"K2-381 b": "2026-10-19",
+"K2-381 c": "2026-10-19",
+"KELT-12 b": "2026-10-20",
+"KELT-15 b": "2026-10-20",
+"KELT-18 b": "2026-10-19",
+"KELT-20 b": "2026-10-19",
+"KELT-21 b": "2026-10-20",
+"KELT-23 A b": "2026-10-20",
+"KELT-24 b": "2026-10-20",
+"KELT-7 b": "2026-10-20",
+"KELT-8 b": "2026-10-20",
+"KMT-2018-BLG-0029L b": "2026-10-20",
+"KMT-2018-BLG-1990L b": "2026-10-20",
+"KMT-2024-BLG-0404L b": "2026-10-20",
+"KOI-134 b": "2026-10-20",
+"KOI-1783.02": "2026-10-20",
+"KOI-94 d": "2026-10-20",
+"Kepler-1007 b": "2026-10-20",
+"Kepler-1019 b": "2026-10-20",
+"Kepler-1178 b": "2026-10-20",
+"Kepler-124 b": "2026-10-20",
+"Kepler-124 c": "2026-10-20",
+"Kepler-124 d": "2026-10-20",
+"Kepler-1265 b": "2026-10-20",
+"Kepler-1315 b": "2026-10-20",
+"Kepler-1456 b": "2026-10-20",
+"Kepler-1540 b": "2026-10-20",
+"Kepler-1632 b": "2026-10-20",
+"Kepler-164 c": "2026-10-20",
+"Kepler-177 b": "2026-10-20",
+"Kepler-181 b": "2026-10-20",
+"Kepler-185 b": "2026-10-20",
+"Kepler-25 c": "2026-10-20",
+"Kepler-289 b": "2026-10-20",
+"Kepler-297 b": "2026-10-20",
+"Kepler-297 c": "2026-10-20",
+"Kepler-353 b": "2026-10-20",
+"Kepler-353 c": "2026-10-20",
+"Kepler-37 d": "2026-10-20",
+"Kepler-385 c": "2026-10-20",
+"Kepler-391 b": "2026-10-20",
+"Kepler-407 b": "2026-10-20",
+"Kepler-450 c": "2026-10-20",
+"Kepler-47 b": "2026-10-20",
+"Kepler-47 c": "2026-10-20",
+"Kepler-53 b": "2026-10-19",
+"Kepler-55 b": "2026-10-20",
+"Kepler-55 c": "2026-10-20",
+"Kepler-55 d": "2026-10-20",
+"Kepler-55 e": "2026-10-20",
+"Kepler-58 c": "2026-10-20",
+"Kepler-589 b": "2026-10-20",
+"Kepler-68 e": "2026-10-20",
+"Kepler-773 b": "2026-10-20",
+"Kepler-796 b": "2026-10-20",
+"Kepler-808 b": "2026-10-20",
+"Kepler-83 b": "2026-10-20",
+"Kepler-83 d": "2026-10-20",
+"Kepler-84 b": "2026-10-20",
+"LHS 1140 b": "2026-10-20",
+"LHS 3844 b": "2026-10-20",
+"MOA-2010-BLG-328L b": "2026-10-20",
+"MOA-2011-BLG-028L b": "2026-10-20",
+"MOA-2013-BLG-605L b": "2026-10-20",
+"NGTS-11 b": "2026-10-20",
+"NGTS-38 b": "2026-10-19",
+"OGLE-2012-BLG-0563L b": "2026-10-20",
+"OGLE-2016-BLG-1195L b": "2026-10-20",
+"OGLE-2017-BLG-1522L b": "2026-10-20",
+"OGLE-2018-BLG-0740L b": "2026-10-20",
+"OGLE-TR-111 b": "2026-10-19",
+"PDS 70 b": "2026-10-20",
+"PDS 70 c": "2026-10-20",
+"Qatar-4 b": "2026-10-20",
+"RR Cae b": "2026-10-20",
+"TIC 172900988 b": "2026-10-20",
+"TIC 279401253 b": "2026-10-20",
+"TIC 393818343 b": "2026-10-19",
+"TOI-1136 e": "2026-10-20",
+"TOI-1173 b": "2026-10-20",
+"TOI-1232 b": "2026-10-20",
+"TOI-1294 b": "2026-10-20",
+"TOI-1338 b": "2026-10-20",
+"TOI-1346 c": "2026-10-19",
+"TOI-1439 b": "2026-10-20",
+"TOI-1516 b": "2026-10-20",
+"TOI-1670 c": "2026-10-20",
+"TOI-1685 b": "2026-10-20",
+"TOI-1691 b": "2026-10-20",
+"TOI-1694 c": "2026-10-20",
+"TOI-1696 b": "2026-10-19",
+"TOI-1752 c": "2026-10-20",
+"TOI-1801 b": "2026-10-20",
+"TOI-181 b": "2026-10-19",
+"TOI-1836 b": "2026-10-20",
+"TOI-1859 b": "2026-10-20",
+"TOI-1860 b": "2026-10-20",
+"TOI-1898 b": "2026-10-20",
+"TOI-199 b": "2026-10-20",
+"TOI-1994 b": "2026-10-20",
+"TOI-201 b": "2026-10-20",
+"TOI-201 c": "2026-10-20",
+"TOI-201 d": "2026-10-19",
+"TOI-2048 b": "2026-10-20",
+"TOI-2076 c": "2026-10-20",
+"TOI-2076 d": "2026-10-20",
+"TOI-2095 b": "2026-10-20",
+"TOI-2128 b": "2026-10-20",
+"TOI-2154 b": "2026-10-20",
+"TOI-2267 d": "2026-10-20",
+"TOI-2337 b": "2026-10-20",
+"TOI-2796 b": "2026-10-20",
+"TOI-3071 b": "2026-10-19",
+"TOI-3362 b": "2026-10-20",
+"TOI-3693 b": "2026-10-20",
+"TOI-4201 b": "2026-10-20",
+"TOI-4329 b": "2026-10-20",
+"TOI-4507 b": "2026-10-20",
+"TOI-4562 b": "2026-10-20",
+"TOI-500 e": "2026-10-20",
+"TOI-561 c": "2026-10-20",
+"TOI-5630 b": "2026-10-20",
+"TOI-5882 b": "2026-10-20",
+"TOI-5916 b": "2026-10-19",
+"TOI-615 b": "2026-10-19",
+"TOI-669 b": "2026-10-20",
+"TOI-833 b": "2026-10-20",
+"TYC 1422-614-1 c": "2026-10-20",
+"V1298 Tau b": "2026-10-20",
+"WASP-101 b": "2026-10-20",
+"WASP-108 b": "2026-10-20",
+"WASP-11 b": "2026-10-20",
+"WASP-124 b": "2026-10-20",
+"WASP-13 b": "2026-10-20",
+"WASP-131 b": "2026-10-20",
+"WASP-135 b": "2026-10-19",
+"WASP-148 b": "2026-10-20",
+"WASP-167 b": "2026-10-20",
+"WASP-21 b": "2026-10-20",
+"WASP-29 b": "2026-10-20",
+"WASP-3 b": "2026-10-20",
+"WASP-31 b": "2026-10-20",
+"WASP-33 b": "2026-10-20",
+"WASP-34 b": "2026-10-20",
+"WASP-36 b": "2026-10-20",
+"WASP-38 b": "2026-10-20",
+"WASP-42 b": "2026-10-20",
+"WASP-43 b": "2026-10-20",
+"WASP-47 b": "2026-10-20",
+"WASP-47 d": "2026-10-20",
+"WASP-54 b": "2026-10-20",
+"WASP-62 b": "2026-10-20",
+"WASP-71 b": "2026-10-20",
+"WASP-77 A b": "2026-10-20",
+"WASP-79 b": "2026-10-20",
+"WASP-83 b": "2026-10-20",
+"WASP-94 A b": "2026-10-19",
+"WASP-95 b": "2026-10-19",
+"WD 1856+534 b": "2026-10-20",
+"Wendelstein-2 b": "2026-10-20",
+"Wolf 327 b": "2026-10-20",
+"Wolf 503 b": "2026-10-20",
+"XO-2 N b": "2026-10-19",
+"XO-5 b": "2026-10-20",
+"XO-6 b": "2026-10-19",
+"XO-7 b": "2026-10-19",
+"bet Pic b": "2026-10-20",
+"gam Lib b": "2026-10-20",
+"gam Lib c": "2026-10-20",
+"pi Men c": "2026-10-20",
+"tau Boo b": "2026-10-20",
+"ups And b": "2026-10-20",
+"ups And c": "2026-10-20",
+"ups And d": "2026-10-20"
 }
 }

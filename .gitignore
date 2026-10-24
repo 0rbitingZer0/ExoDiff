@@ -44,8 +44,8 @@
 !/data/raw/.gitkeep
 !/data/raw/exoplanet_eu_20261015T213618Z.csv
 !/data/raw/exoplanet_eu_20261015T213618Z.manifest.json
-!/data/raw/exoplanet_eu_sources_20261020T214133Z.json
-!/data/raw/exoplanet_eu_sources_20261020T214133Z.manifest.json
+!/data/raw/exoplanet_eu_sources_20261020T214134Z.json
+!/data/raw/exoplanet_eu_sources_20261020T214134Z.manifest.json
 /data/processed/*
 !/data/processed/.gitkeep
 

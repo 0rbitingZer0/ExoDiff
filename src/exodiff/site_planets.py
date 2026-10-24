@@ -52,7 +52,7 @@ def _hz(row) -> dict | None:
 
 
 D_OPEN = ("D-disagree", "D-newer-paper")
-D_NOTES = ("D-theoretical", "D-eu-paper", "D-other-row", "D-close", "D-limit")
+D_NOTES = ("D-theoretical", "D-same-paper", "D-eu-paper", "D-other-row", "D-close", "D-limit")
 NOTE_GAP = 0.10
 NOTE_GAP_ECC = 0.10
 

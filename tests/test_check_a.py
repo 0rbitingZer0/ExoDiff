@@ -82,3 +82,33 @@ def test_a5_counts_best_mass_copy_once_and_uses_printed_digits():
     row.update(pl_massjstr=None, pl_massestr=None, pl_massj=23.0, pl_bmassj=23.0)
     out, _ = check_a(pd.DataFrame([row]))
     assert list(out["rule"]) == ["A5"] and list(out["column"]) == ["pl_masse"]
+
+
+TIC = "<a refstr=STASSUN_ET_AL__2019 href=https://ui.adsabs.harvard.edu/abs/2019AJ....158..138S/abstract target=ref>TICv8</a>"
+
+
+def star(**over):
+    base = {"default_flag": 1, "sy_refname": TIC, "sy_dist": 5.675773, "sy_disterr1": 0.0059099, "sy_disterr2": -0.0059099,
+            "sy_plx": 392.4, "sy_plxerr1": 0.91}
+    base.update(over)
+    return row(**base)
+
+
+def test_distance_that_does_not_match_the_parallax():
+    out, _ = check_a(pd.DataFrame([star()]))
+    hit = out[out["rule"] == "A8"].iloc[0]
+    assert hit["reference"] == "TICv8" and hit["column"] == "sy_dist" and not hit["label_only"]
+    assert rules([star(sy_dist=2.548)]) == []
+    assert rules([star(sy_dist=1919.19, sy_disterr1=150.0, sy_disterr2=-120.0, sy_plx=0.4945, sy_plxerr1=0.04)]) == []
+    for over in ({"sy_plxerr1": 50.0}, {"sy_plx": None}, {"sy_plx": 0.0}, {"sy_plx": -1.0}, {"sy_plxerr1": None},
+                 {"sy_dist": None}, {"sy_disterr1": None}, {"default_flag": 0}):
+        assert rules([star(**over)]) == [], over
+
+
+def test_a_nasa_note_on_the_distance_makes_it_a_note():
+    note = {"source": "overview", "categories": {"distance"}, "bibcode": "2019AJ....158..138S",
+            "notes": "The distance in the TESS Input Catalog for this object may be missing or incorrect."}
+    out, _ = check_a(pd.DataFrame([star()]), {"P b": [note]})
+    assert list(out["rule"]) == ["A8n"] and bool(out["label_only"].iloc[0])
+    out, _ = check_a(pd.DataFrame([star()]), {"P b": [{**note, "bibcode": "2020A&A...643A.112S"}]})
+    assert list(out["rule"]) == ["A8"]

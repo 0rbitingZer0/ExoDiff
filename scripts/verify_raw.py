@@ -2,13 +2,27 @@ from __future__ import annotations
 from pathlib import Path
 import hashlib
 import json
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 HASH_KEYS = ("sha256_raw_response", "sha256_canonical_json", "sha256")
 
 
-def bad_files(raw: Path, committed: dict | None = None) -> list[Path]:
+def git_blob(data: bytes) -> str:
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def tracked(root: Path) -> dict:
+    try:
+        out = subprocess.run(["git", "ls-files", "-s", "--", "data/raw"], cwd=root, capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    rows = (line.split("\t", 1) for line in out.splitlines() if "\t" in line)
+    return {Path(path).name: meta.split()[1] for meta, path in rows}
+
+
+def bad_files(raw: Path, committed: dict | None = None, from_git: dict | None = None) -> list[Path]:
     bad = []
     data = {p for p in raw.iterdir() if p.is_file() and p.name != ".gitkeep" and not p.name.endswith(".manifest.json")}
     for manifest in sorted(raw.glob("*.manifest.json")):
@@ -24,7 +38,8 @@ def bad_files(raw: Path, committed: dict | None = None) -> list[Path]:
     bad += list(data)
     if committed:
         bad += [p for p in raw.iterdir() if p.is_file() and p.name != ".gitkeep" and p not in bad
-                and committed.get(p.name) != hashlib.sha256(p.read_bytes()).hexdigest()]
+                and committed.get(p.name) != hashlib.sha256(p.read_bytes()).hexdigest()
+                and (from_git or {}).get(p.name) != git_blob(p.read_bytes())]
     return sorted(set(bad))
 
 
@@ -34,9 +49,9 @@ def main() -> int:
         committed = json.loads((ROOT / "site/data/meta.json").read_text(encoding="utf-8")).get("raw_files")
     except (OSError, ValueError):
         committed = None
-    bad = bad_files(raw, committed) if raw.is_dir() else []
+    bad = bad_files(raw, committed, tracked(ROOT)) if raw.is_dir() else []
     for path in bad:
-        print(f"{'removed' if delete else 'would remove'}: {path.name} (fingerprint doesn't match its manifest or the committed list)", file=sys.stderr)
+        print(f"{'removed' if delete else 'would remove'}: {path.name} (fingerprint doesn't match its manifest, the committed list or git)", file=sys.stderr)
         if delete:
             path.unlink()
     print(f"saved copies checked: {len(bad)} not usable", file=sys.stderr)

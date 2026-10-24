@@ -182,7 +182,7 @@ const COLUMN = {
   pl_rade: "size (Earths)", pl_radj: "size (Jupiters)", pl_bmasse: "mass (Earths)", pl_bmassj: "mass (Jupiters)",
   pl_masse: "mass (Earths)", pl_massj: "mass (Jupiters)", pl_msinie: "minimum mass (Earths)", pl_msinij: "minimum mass (Jupiters)",
   pl_orbper: "orbit time", pl_orbsmax: "orbit size", pl_orbeccen: "orbit stretch", pl_dens: "density",
-  pl_ratdor: "orbit in star sizes", pl_ratror: "size ratio", st_rad: "star size", st_mass: "star mass", sy_dist: "distance",
+  pl_ratdor: "orbit in star sizes", pl_ratror: "size ratio", st_rad: "star size", st_mass: "star mass", sy_dist: "distance", sy_plx: "parallax",
   st_age: "star age", st_teff: "star temperature", st_met: "star metallicity", st_lum: "star brightness", pl_orbincl: "orbit tilt",
 };
 const plain = (text) => String(text || "").replace(/\b(pl|st|sy)_[a-z0-9]+\b/g, (c) => COLUMN[c] || c);
@@ -358,8 +358,8 @@ function describeFinding(planet, f) {
     const a = range(def.values[l.rule]);
     const [, pv] = pairOf(l);
     return {
-      title: l.rule === "distance" ? "NASA catalog data (not shown on the page) has a distance no NASA paper has"
-        : `NASA catalog data (behind its page) has a ${NOUN[l.rule]} that no NASA paper has`,
+      title: l.rule === "distance" ? "NASA catalog data (not shown on the page) and the archive differ on the distance"
+        : `NASA catalog data (behind its page) and the archive differ on the ${NOUN[l.rule]}`,
       bars: [[`NASA archive · ${defRef}`, a, "nasa"], ["catalog page", pv != null ? { v: pv } : null, "other"]], unit,
       gapText: pv != null && a ? compare("the catalog page's value", pv, "the archive's", a.v) : `page shows ${l.display}`,
     };
@@ -844,7 +844,7 @@ function renderMethodology() {
     el("table", { class: "data" }, el("thead", {}, el("tr", {}, ...["value changed", "by 2%", "by 5%", "by 10%", "by 25%"].map((h) => el("th", { text: h })))),
       el("tbody", {}, ...rows.map((r) => el("tr", {}, ...r.map((v, i) => el("td", { class: i ? "num" : null, text: v })))))),
     el("p", { class: "muted", text: `Small changes often stay inside a value's own uncertainty range, so they aren't caught. Density is hardest: it depends on size cubed.${tenths ? ` About ${tenths} in 10 size copies changed by 2% look like the known difference between Jupiter's average and equatorial size, and are labelled as that.` : ""}` }),
-    el("p", { class: "muted", text: "Some of these may still be shown as notes when they match a known explanation. The test shows what the checks catch when an error is planted; it doesn't prove that every real error is caught." }));
+    el("p", { class: "muted", text: "Some of these may still be shown as notes when they match a known explanation. The test shows what the checks catch when an error is planted; it doesn't prove that every real error is caught, and it isn't a review of the findings against the papers." }));
   document.getElementById("how-cards").replaceChildren(...["radius", "density", "kepler", "a_over_rstar"].map((k) => {
     const cc = CARDS[k], w = W(`card/${k}`) || {};
     return el("div", { class: "case" }, el("div", { class: "case-head" }, el("h3", { text: cc.title.split(":")[0] })),
