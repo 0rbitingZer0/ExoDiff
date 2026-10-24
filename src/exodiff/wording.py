@@ -1,6 +1,7 @@
 STAT = ("Gap in error bars = difference ÷ √(σ₁² + σ₂²), where σ₁ and σ₂ are the two values' uncertainties. "
-        "Rounding is allowed for, and a gap of more than 2 is a finding. This is a screening rule, not a p-value: "
-        "it assumes simple, independent errors.")
+        "Rounding is allowed for, and a gap of more than 2 is a finding. The combined uncertainty is approximate: it "
+        "assumes independent errors, uses each value's ± on the side facing the other value, and averages uneven ± ranges "
+        "for values computed from several inputs. This is a screening rule, not a p-value.")
 
 NEW = {
 "general/finding": ("", "Worth a closer look. These values don't agree under ExoDiff's stated check, and none of the explanations tested so far accounts for the gap. This is not proof that either source is wrong.", ""),
@@ -33,6 +34,12 @@ NEW = {
 "A/A7": ("Several rows in NASA's archive from the same paper, for the same planet.",
          "The values differ between these rows. They may be different solutions the paper gives (for example from different data or assumptions) or separate imports; it isn't evidence that the paper is inconsistent.",
          "Same planet and reference; differing radius, mass, orbit time, orbit size or eccentricity; star values that also differ are listed."),
+"A/A8": ("The star's distance vs the distance its parallax implies, in the same archive row.",
+         "A star's parallax (the tiny yearly shift in its position) sets its distance. Here the row's distance and the distance its parallax implies are **5% or more apart and more than 2 error bars apart**, so the archive row is internally inconsistent. ExoDiff doesn't say which number is right.",
+         "Default rows only; sy_dist vs 1000 / (sy_plx + 0.029 mas) when sy_refname is TICv8 (TIC v8 distances apply the Gaia DR2 parallax zero-point of −0.029 mas: Bailer-Jones et al. 2018, AJ 156, 58, §2.1; Lindegren et al. 2018, A&A 616, A2), 1000 / sy_plx otherwise; parallax error under 10%. The system parameters can combine sources, e.g. a Hipparcos parallax with a catalogue distance. The source cited is sy_refname."),
+"A/A8n": ("The star's distance vs the distance its parallax implies, in the same archive row.",
+          "The row's distance and the distance its parallax implies disagree, and NASA's own note on this star says the catalogue distance may be wrong, so it is shown as a note.",
+          "Same rule as A8; the note is NASA's System Overview note on the star, citing the same reference as the row's system parameters."),
 
 "card/radius": ("A planet's size as listed vs the size from its own row's other numbers.",
                 "As a planet crosses its star it blocks some light. From the dip's depth and shape, astronomers estimate the planet-to-star size ratio; multiplying that ratio by the star's size gives the planet's size. If the listed size doesn't match, the row's values don't combine consistently. That doesn't say which one is off.",
@@ -78,12 +85,12 @@ NEW = {
              STAT),
 
 "card/public": ("A number on NASA's public catalog page vs the numbers in NASA's research archive for the same planet.",
-                "Both are run by NASA, and the page usually shows one of the archive's values, rounded.\n\nIf the page shows **a number that appears in no archive row**, the difference is flagged for investigation. Possible explanations include an outdated page, a different source or a derived value.",
+                "Both are run by NASA, and the page usually shows one of the archive's values, rounded.\n\nIf the page shows **a number that appears in no archive row**, the difference is flagged for investigation. Either side may be out of date or use another source, and the page may show a derived value; ExoDiff doesn't decide which is right.",
                 "The page's data feed (science.nasa.gov) vs the archive's PS table (one row per paper) and PSCompPars (NASA's combined table, which fills gaps from different papers and calculates some values)."),
 "C/C-default": ("Catalog page vs archive.", "The page shows the value from NASA's selected parameter set (its 'default' paper for this planet, not necessarily the newest or most precise).", ""),
 "C/C-composite": ("Catalog page vs archive.", "The page shows a value from PSCompPars, NASA's combined parameter table, which takes values from several papers and calculates some.", ""),
 "C/C-other": ("Catalog page vs archive.", "The page's value matches another paper in the archive, while the archive's selected paper is a different one. The page and archive may update on different cycles.", ""),
-"C/C-none": ("Catalog page vs archive.", "The page shows a number that no archive row has. A different source, a derived value or an out-of-date page could explain it.", "Matched within the page's displayed digits, against every PS row and PSCompPars; the page's snapshot date is shown on the card."),
+"C/C-none": ("Catalog page vs archive.", "The page shows a number that none of NASA's archive rows for this planet has, nor its combined table. Either side may be out of date or use another source; ExoDiff doesn't decide which.", "Matched within the page's displayed digits, against every PS row and PSCompPars; the page's snapshot date is shown on the card."),
 "C/C-survey": ("The distance in NASA's catalog data vs the archive's distance.", "Within 5% (ExoDiff's threshold) of each other. The catalog data may use a different distance source (not checked which); the page doesn't display distance.", "Same 5% measure as check E (larger ÷ smaller − 1)."),
 "C/C-absent": ("Catalog page vs archive.", "One side has no value, so there's nothing to compare.", ""),
 "C/C-estimate": ("The planet size on NASA's catalog page vs the archive.",
@@ -146,14 +153,15 @@ NEW = {
 "pattern/other": ("", "No simple pattern fits. That doesn't make it less interesting; it just has no recognised signature.", ""),
 
 "about/intro": ("", "ExoDiff checks public exoplanet data for **inconsistencies**. It compares measurements within research archive records, across NASA's archive and public catalogue pages, against exoplanet.eu, and with updated stellar distances from Gaia.\n\nIt identifies **discrepancies worth investigating**, shows the evidence behind them, and tests possible explanations. **A finding is not proof of an error**, and ExoDiff **does not decide which published value is correct**.\n\nExoDiff focuses on automated consistency checks across catalogue records and public pages, linking discrepancies back to their sources rather than selecting a single value as correct.", ""),
-"method/intro": ("", "ExoDiff runs **six checks every day** against public exoplanet data. Each check uses its own evidence and rules. The results are screening tools: **a discrepancy is a reason to investigate, not proof that a published value is wrong**.", ""),
+"method/intro": ("", "ExoDiff runs **six checks every day** against public exoplanet data. Each check uses its own evidence and rules. The results are screening tools: **a discrepancy is a reason to investigate, not proof that a published value is wrong**.\n\nThe checks give three kinds of evidence: a value invalid as stored, a row that doesn't add up under a stated formula, and a value that differs from another source. None of them says which published value is correct.", ""),
 "about/lead": ("", "Two values count as different when they are **more than 2 error bars apart**. An error bar is the ± range a paper gives for its value; ExoDiff combines the two values' ranges and allows for rounding. This applies to the row check and the exoplanet.eu check. The Gaia check instead asks for ranges that don't overlap and a gap of at least 5%, and the catalog checks compare the numbers shown. These are ExoDiff's screening rules, **not formal verdicts**.\n\nA difference becomes **a note rather than a finding** when it falls below the threshold, can't be judged reliably, involves a limit or a value labelled as an estimate, or matches an explanation ExoDiff treats as innocent: a unit convention, another paper NASA also holds, or a source flagging its own value. These may explain a difference but are not confirmed. Some patterns stay findings by design: exoplanet.eu citing a newer paper NASA doesn't have, and a possible mix-up of planet letters; a star value from a catalogue or another paper is shown as context, not as an explanation.\n\nAnything left is classified as a finding: **worth checking, not a proven error**.", STAT),
 }
 
 NEW["card/values"] = ("Each value in an archive row on its own, and its stored uncertainty.",
                       "Sizes, masses, densities, orbit times, orbit sizes and distances **can't be zero or negative**; an orbit's stretch "
                       "must be at least 0 and less than 1; uncertainties must follow the archive's sign convention; and a value stored in "
-                      "both Earth and Jupiter units **should convert consistently** between the two.", "Check A: rules A1-A7.")
+                      "both Earth and Jupiter units **should convert consistently** between the two. A star's distance should also "
+                      "**match its parallax** (the tiny yearly shift in its position that sets its distance).", "Check A: rules A1-A8.")
 NEW["card/rows"] = ("Each archive row against itself: values that simple physics links together.",
                     "A planet's size follows from its size relative to the star and the star's size; its density from its mass and size; "
                     "its orbit size from its orbit time and the star's mass; and, for a circular orbit, its distance counted in star sizes "
@@ -163,13 +171,14 @@ NEW["card/rows"] = ("Each archive row against itself: values that simple physics
 LABELS = {
     "A/A1": "value must be positive", "A/A2": "orbit stretch outside 0-1", "A/A3": "uncertainty sign", "A/A4": "limit with a ± range",
     "A/A5": "Earth and Jupiter copies differ", "A/A5m": "copies: average vs equator sizes", "A/A5r": "copies: rounded",
-    "A/A7": "one paper, several rows",
+    "A/A7": "one paper, several rows", "A/A8": "distance doesn't match the parallax",
+    "A/A8n": "distance doesn't match the parallax (NASA has a note)",
     "B/B-look": "row doesn't add up", "B/B-transit-open": "orbit size from the transit doesn't fit",
     "B/B-cat": "row doesn't add up (star value from a catalogue)", "B/B-src": "row doesn't add up (star value from another paper)",
     "B/B-doc": "row: NASA has a note", "B/B-meanR": "row: average vs equator sizes", "B/B-lit": "row: orbit size from older papers",
     "B/B-transit": "row: orbit size from the transit", "B/B-dup": "row: several rows for the paper",
     "B/B-close": "row: below the threshold",
-    "C/C-none": "catalog page shows a number no paper has", "C/C-other": "catalog page shows another paper's value",
+    "C/C-none": "catalog page and archive differ", "C/C-other": "catalog page shows another paper's value",
     "C/C-survey": "catalog distance from another survey", "C/C-estimate": "catalog size is an estimate",
     "D/D-disagree": "exoplanet.eu disagrees", "D/D-newer-paper": "exoplanet.eu cites a newer paper",
     "D/D-letters": "exoplanet.eu may use another letter", "D/D-eu-paper": "exoplanet.eu uses another paper",

@@ -16,7 +16,8 @@ SOLAR_TO_EARTH_RADII = NOMINAL_SOLAR_RADIUS_M / NOMINAL_EARTH_EQUATORIAL_RADIUS_
 CONFIRMED_SOLTYPES = {"Published Confirmed"}
 
 OPTIONAL_COLUMNS = {"tran_flag", "pl_ratror", "pl_ratrorerr1", "pl_ratrorerr2", "pl_ratrorlim",
-                    "pl_bmasse", "pl_dens", "pl_orbsmax", "pl_orbper", "pl_ratdor", "st_mass", "pl_orbeccen"}
+                    "pl_bmasse", "pl_dens", "pl_orbsmax", "pl_orbper", "pl_ratdor", "st_mass", "pl_orbeccen",
+                    "sy_dist", "sy_plx", "sy_plxerr1"}
 
 REQUIRED_COLUMNS = {
     "pl_name", "hostname", "soltype", "pl_rade", "pl_radeerr1", "pl_radeerr2",

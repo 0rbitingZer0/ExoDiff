@@ -13,12 +13,14 @@ _CATEGORY_PATTERNS = {
     "radius": r"planet radius|transit depth|^δ$|rp/r",
     "mass": r"planet mass|mp sin|density",
     "orbit": r"orbital period|semi-major axis|a/r|stellar mass",
+    "distance": r"distance|parallax",
 }
 _TEXT_PATTERNS = {
     "identity": r"planet letter|planet name|\balias",
     "radius": r"radius|radii|transit depth|rp\s*/\s*r",
     "mass": r"\bmass\b|density|m\s*sin\s*i|msini",
     "orbit": r"orbital period|semi-major axis|a\s*/\s*r|stellar mass",
+    "distance": r"\bdistance|parallax",
 }
 CHECK_CATEGORIES = {
     "pair_radius": {"identity", "radius"},
@@ -26,6 +28,7 @@ CHECK_CATEGORIES = {
     "density": {"identity", "radius", "mass"},
     "kepler": {"identity", "orbit"},
     "a_over_rstar": {"identity", "orbit"},
+    "distance": {"distance"},
 }
 
 

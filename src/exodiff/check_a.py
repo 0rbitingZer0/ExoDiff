@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 import html
+import math
 import re
 
 import pandas as pd
 
 from . import wording
+from .check_b import CLOSE_BARS
 from .consistency import EARTH_RADIUS_CONVENTION_ALLOWANCE, rounding_allowance
+from .gaia import SMALL, apart
+from .known_notes import documented
 from .references import parse_reference, reference_key
 from .screening import CONFIRMED_SOLTYPES, _num, _text
 
@@ -25,8 +29,9 @@ UNIT_PAIRS = (("pl_rade", "pl_radj", JUPITER_IN_EARTH_RADII, EARTH_RADIUS_CONVEN
               ("pl_masse", "pl_massj", JUPITER_IN_EARTH_MASSES, A5_MASS_ALLOWANCE),
               ("pl_msinie", "pl_msinij", JUPITER_IN_EARTH_MASSES, A5_MASS_ALLOWANCE))
 DUPLICATE_FIELDS = ("pl_rade", "pl_bmasse", "pl_orbper", "pl_orbsmax", "pl_orbeccen")
+PARALLAX_ZERO_POINT = 0.029
 
-FINE_WHEN = {r: wording.means(f"A/{r}") for r in ("A1", "A2", "A3", "A4", "A5", "A7", "A5m", "A5r")}
+FINE_WHEN = {r: wording.means(f"A/{r}") for r in ("A1", "A2", "A3", "A4", "A5", "A7", "A5m", "A5r", "A8", "A8n")}
 ASSUMPTION_COLUMNS = ("st_age", "st_mass", "st_rad", "st_teff", "st_met", "st_lum", "sy_dist", "pl_orbincl")
 TITLES = {
     "A1": "a value that must be positive is zero or negative",
@@ -37,7 +42,21 @@ TITLES = {
     "A7": "the same paper appears in several rows with different values",
     "A5m": "Earth and Jupiter copies converted with mean instead of equatorial radii",
     "A5r": "the Earth-unit copy is the Jupiter value rounded to fewer digits",
+    "A8": "the star's distance doesn't match its parallax",
+    "A8n": "the star's distance doesn't match its parallax (NASA has a note)",
 }
+
+
+def distance_vs_parallax(row) -> tuple[float, float] | None:
+    d, p, pe = _num(row.get("sy_dist")), _num(row.get("sy_plx")), _num(row.get("sy_plxerr1"))
+    up, down = _num(row.get("sy_disterr1")), _num(row.get("sy_disterr2"))
+    if None in (d, p, pe, up, down) or d <= 0 or p <= 0 or pe <= 0 or pe / p >= 0.1:
+        return None
+    zero_point = PARALLAX_ZERO_POINT if "TICv8" in (_text(row.get("sy_refname")) or "") else 0.0
+    implied = 1000 / (p + zero_point)
+    spread = math.hypot(abs(down) if d > implied else abs(up), 1000 * pe / (p + zero_point) ** 2)
+    bars = abs(d - implied) / spread if spread else math.inf
+    return (implied, bars) if apart(d, implied) >= SMALL and bars > CLOSE_BARS else None
 
 
 def _sig_figs(x: float) -> int:
@@ -74,7 +93,7 @@ def _value_columns(frame: pd.DataFrame) -> list[str]:
     return sorted(c[:-4] for c in frame.columns if c.endswith("err1") and c[:-4] in frame.columns)
 
 
-def check_a(frame: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+def check_a(frame: pd.DataFrame, notes: dict | None = None) -> tuple[pd.DataFrame, dict]:
     rows = frame[frame["soltype"].isin(CONFIRMED_SOLTYPES)] if "soltype" in frame else frame
     values = _value_columns(rows)
     out = []
@@ -124,6 +143,14 @@ def check_a(frame: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
             else:
                 flag("A5", row, earth_col, earth, f"{earth_col} = {earth}, {jup_col} = {jup} (x{factor:.3f} = {jup * factor:.4g}); "
                                                   f"{100 * (ratio - 1):+.2f}% vs allowed {100 * allowance:.2f}%")
+
+        if _num(row.get("default_flag")) == 1 and (hit := distance_vs_parallax(row)):
+            implied, bars = hit
+            source = _text(row.get("sy_refname"))
+            noted = documented(_text(row.get("pl_name")), "distance", notes or {}, parse_reference(source)["bibcode"])
+            flag("A8n" if noted else "A8", {**row, "pl_refname": source}, "sy_dist", _num(row.get("sy_dist")),
+                 f"sy_dist = {_num(row.get('sy_dist'))} pc; sy_plx = {_num(row.get('sy_plx'))} mas implies {implied:.4g} pc; "
+                 f"{bars:.0f} error bars apart" + (f"; NASA note: {str(noted[0].get('notes') or '').rstrip('.')}" if noted else ""), label_only=bool(noted))
 
     keyed = rows.assign(_key=rows["pl_name"].astype(str) + "|" + rows["pl_refname"].map(reference_key))
     fields = [c for c in DUPLICATE_FIELDS if c in keyed]
