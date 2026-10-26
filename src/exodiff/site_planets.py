@@ -129,7 +129,8 @@ def build_planets(archive: pd.DataFrame, check_a: pd.DataFrame, check_b: pd.Data
                                   "updated": d.get("eu_updated") if isinstance(d.get("eu_updated"), str) else None,
                                   "matched": d.get("matched_reference") if isinstance(d.get("matched_reference"), str) else None,
                                   "source": d.get("eu_reference") if isinstance(d.get("eu_reference"), str) else None,
-                                  "bars": _clean(d.get("bars")), "row": _clean(d.get("nasa_row_value"))}
+                                  "bars": _clean(d.get("bars")), "row": _clean(d.get("nasa_row_value")),
+                                  "from": d.get("nasa_from") if isinstance(d.get("nasa_from"), str) else None}
 
         leads = []
         for a in (a_by[name].to_dict("records") if name in a_by else []):
@@ -156,10 +157,11 @@ def build_planets(archive: pd.DataFrame, check_a: pd.DataFrame, check_b: pd.Data
         for field, e in eu.items():
             if e["bucket"] in D_OPEN or e["bucket"] in D_NOTES:
                 leads.append({"kind": "D", "rule": field, "bucket": e["bucket"], "eu": e["v"], "nasa": e["nasa"],
-                              "source": e["source"], "matched": e["matched"], "bars": e["bars"], "row": e["row"],
+                              "source": e["source"], "matched": e["matched"], "bars": e["bars"], "row": e["row"], "from": e["from"],
                               "label_only": e["bucket"] not in D_OPEN})
             elif e["bucket"] == "D-no-errors" and _far_apart(field, e["v"], e["nasa"]):
-                leads.append({"kind": "D", "rule": field, "bucket": e["bucket"], "eu": e["v"], "nasa": e["nasa"], "label_only": True})
+                leads.append({"kind": "D", "rule": field, "bucket": e["bucket"], "eu": e["v"], "nasa": e["nasa"], "from": e["from"],
+                              "label_only": True})
 
         e = e_by.get(_text(first.get("hostname")))
         gaia = None

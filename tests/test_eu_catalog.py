@@ -228,3 +228,49 @@ def test_mass_compared_with_nasas_jupiter_copy():
     assert r.loc["mass", "bucket"] == "D-close" and 1.2 < r.loc["mass", "bars"] < 1.4
     nasa[["pl_massj", "pl_massjerr1", "pl_massjerr2"]] = None
     assert _buckets({"mass": 6.6, "mass_error_min": 0.3, "mass_error_max": 0.3}, nasa, src).loc["mass", "bucket"] == "D-newer-paper"
+
+
+def _corot1(orbit=0.0254, err=0.0004, comp_ref="Bonomo et al. 2017", default_orbit=None):
+    ref = lambda label: f"<a refstr={label.split()[0].upper()} href=https://ui.adsabs.harvard.edu/abs/x/abstract target=ref>{label}</a>"
+    rows = [("Barge et al. 2008", 1, default_orbit, None, None), ("Bonomo et al. 2017", 0, 0.02752, 0.00022, -0.00023),
+            ("Southworth 2011", 0, 0.02536, 0.00099, -0.00099), ("Pont et al. 2010", 0, 0.0261, 0.0005, -0.0005)]
+    nasa = pd.DataFrame([{"pl_name": "CoRoT-1 b", "default_flag": d, "pl_refname": ref(r), "pl_orbper": 1.5089557, "pl_orbsmax": a,
+                          "pl_orbsmaxerr1": e1, "pl_orbsmaxerr2": e2, "pl_orbsmaxlim": 0 if a else None} for r, d, a, e1, e2 in rows])
+    eu = pd.DataFrame([eu_row(name="CoRoT-1 b", alternate_names="", orbital_period=1.50896846, semi_major_axis=orbit,
+                              semi_major_axis_error_min=err, semi_major_axis_error_max=err, star_distance=None, radius=None)])
+    comp = pd.DataFrame([{"pl_name": "CoRoT-1 b", "pl_orbsmax": 0.02752, "pl_orbsmax_reflink": ref(comp_ref)}])
+    return nasa, eu, comp
+
+
+def test_empty_default_value_is_compared_with_nasas_own_pick():
+    nasa, eu, comp = _corot1()
+    join = join_eu(eu, ["CoRoT-1 b"])
+    assert check_d(nasa, eu, join)[0].set_index("field").loc["orbit", "bucket"] == "D-absent"
+    result, stats = check_d(nasa, eu, join, composite=comp)
+    orbit = result.set_index("field").loc["orbit"]
+    assert (orbit["bucket"], orbit["matched_reference"], orbit["nasa_from"], orbit["nasa_default"]) == (
+        "D-other-paper", "Southworth 2011", "Bonomo et al. 2017", 0.02752)
+    assert stats["compared_via_composite"] == 1
+    nasa, eu, comp = _corot1(orbit=0.0230, err=0.0002)
+    orbit = check_d(nasa, eu, join_eu(eu, ["CoRoT-1 b"]), composite=comp)[0].set_index("field").loc["orbit"]
+    assert (orbit["bucket"], orbit["nasa_from"], orbit["nasa_default"]) == ("D-disagree", "Bonomo et al. 2017", 0.02752)
+    assert orbit["bars"] > 2
+
+
+def test_nasas_pick_is_used_only_for_a_paper_value_the_default_lacks():
+    nasa, eu, comp = _corot1(comp_ref="Calculated by NASA")
+    orbit = check_d(nasa, eu, join_eu(eu, ["CoRoT-1 b"]), composite=comp)[0].set_index("field").loc["orbit"]
+    assert orbit["bucket"] == "D-absent" and pd.isna(orbit["nasa_from"])
+    nasa, eu, comp = _corot1(default_orbit=0.0254)
+    orbit = check_d(nasa, eu, join_eu(eu, ["CoRoT-1 b"]), composite=comp)[0].set_index("field").loc["orbit"]
+    assert (orbit["bucket"], orbit["matched_reference"]) == ("D-same", "Barge et al. 2008") and pd.isna(orbit["nasa_from"])
+
+
+def test_nasas_pick_for_mass_must_be_a_true_mass():
+    nasa = pd.DataFrame([{"pl_name": "X b", "default_flag": 1, "pl_refname": REF_B, "pl_masse": None, "pl_bmasse": 600.0},
+                         {"pl_name": "X b", "default_flag": 0, "pl_refname": REF_K, "pl_masse": 1000.0, "pl_masseerr1": 50.0, "pl_masseerr2": -50.0}])
+    eu = pd.DataFrame([eu_row(name="X b", alternate_names="", mass=2.0, mass_error_min=0.05, mass_error_max=0.05)])
+    for prov, bucket in (("Mass", "D-disagree"), ("Msini", "D-absent")):
+        comp = pd.DataFrame([{"pl_name": "X b", "pl_bmasse": 1000.0, "pl_bmassprov": prov, "pl_bmasse_reflink": REF_K}])
+        mass = check_d(nasa, eu, join_eu(eu, ["X b"]), composite=comp)[0].set_index("field").loc["mass"]
+        assert mass["bucket"] == bucket, prov

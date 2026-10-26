@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from exodiff.eu_catalog import join_eu
 from exodiff import runlog
+from exodiff.raw_store import saved_at
 from exodiff.simbad import STEM, fetch_idents, host_gaia
 
 
@@ -25,7 +26,8 @@ def main() -> int:
         result = fetch_idents(ids, ROOT)
     except RuntimeError as exc:
         saved = sorted((ROOT / "data/raw").glob(f"{STEM}_*Z.json"))
-        runlog.record(ROOT, "SIMBAD", "copy" if saved else "missing", error=str(exc)[:200])
+        runlog.record(ROOT, "SIMBAD", "copy" if saved else "missing", error=str(exc)[:200],
+                      copy_from=saved_at(ROOT / "data/raw", STEM) if saved else None)
         print(f"WARNING: SIMBAD identifiers not updated: {exc}", file=sys.stderr)
         return 0
     runlog.record(ROOT, "SIMBAD", "unchanged" if result["unchanged"] else "fresh", copy_from=result["retrieved_at_utc"],

@@ -297,6 +297,12 @@ function markCells(planet, def, g, k, soft, plan) {
   }
 }
 
+function nasaPaper(planet, l) {
+  if (!l.from) return null;
+  const cands = planet.papers.filter((p) => p.ref === l.from && p.values[l.rule]);
+  return cands.find((p) => Number(p.values[l.rule].v) === Number(l.nasa)) || cands[0] || null;
+}
+
 function describeFinding(planet, f) {
   const l = f.l;
   const def = planet.papers.find((p) => p.default) || { values: {}, ref: null };
@@ -315,7 +321,8 @@ function describeFinding(planet, f) {
   if (l.kind === "D") {
     const eu = (planet.eu || {})[l.rule] || {};
     const own = l.row != null ? planet.papers.find((p) => p.ref === l.matched && p.values[l.rule] && Number(p.values[l.rule].v) === Number(l.row)) : null;
-    const base = own || def;
+    const fb = own ? null : nasaPaper(planet, l);
+    const base = own || fb || def;
     let a = range(base.values[l.rule]);
     let b = { v: l.eu, lo: eu.em != null ? l.eu - Math.abs(eu.em) : null, hi: eu.ep != null ? l.eu + Math.abs(eu.ep) : null };
     let u = unit;
@@ -328,14 +335,15 @@ function describeFinding(planet, f) {
     const beyondAll = rows.length && (higher ? b.v > Math.max(...rows) : b.v < Math.min(...rows));
     const title = l.bucket === "D-newer-paper" ? `exoplanet.eu's ${NOUN[l.rule]} comes from a paper newer than any in NASA's archive`
       : l.matched ? `exoplanet.eu and NASA cite the same paper but give a different ${NOUN[l.rule]}`
-      : `exoplanet.eu lists a ${higher ? "higher" : "lower"} ${NOUN[l.rule]} than ${beyondAll ? "any paper NASA has" : "NASA's default paper"}`;
+      : `exoplanet.eu lists a ${higher ? "higher" : "lower"} ${NOUN[l.rule]} than ${beyondAll ? "any paper NASA has" : fb ? "the paper NASA uses for it" : "NASA's default paper"}`;
     return {
       title,
-      bars: [[`NASA · ${own ? own.ref : defRef}`, a, "nasa"], [`exoplanet.eu${l.source ? ` · ${l.source}` : ""}`, b, "other"]], unit: u,
+      bars: [[`NASA · ${(own || fb || { ref: defRef }).ref}`, a, "nasa"], [`exoplanet.eu${l.source ? ` · ${l.source}` : ""}`, b, "other"]], unit: u,
       gapText: `${ecc ? `exoplanet.eu's value is ${num(Math.abs(b.v - (a ? a.v : l.nasa)), 3)} ${higher ? "higher" : "lower"} than NASA's` : compare("exoplanet.eu's value", b.v, "NASA's", a ? a.v : l.nasa)} · ${l.bars != null && Number.isFinite(l.bars) ? `${num(l.bars, 2)} error bars apart` : overlaps(a, b) ? "ranges overlap" : "ranges don't overlap"}`,
       facts: [l.source ? (l.source.includes(";")
           ? `exoplanet.eu's page lists ${l.source} for this value${l.bucket === "D-newer-paper" ? "; NASA's archive holds none of them" : ""}.`
           : `exoplanet.eu's page gives ${l.source} as the source of this value${l.matched ? `; NASA's archive has it as ${l.matched}` : l.bucket === "D-newer-paper" ? "; NASA's archive may not have this paper yet" : ""}.`) : null,
+        fb ? `NASA's default paper (${defRef}) gives no ${NOUN[l.rule]}; NASA's combined table takes it from ${fb.ref}, so that is the number compared.` : null,
         l.shared_alias ? `exoplanet.eu also calls this planet “${l.shared_alias}”, which NASA lists as a name of ${l.alias_of}.` : null],
     };
   }
@@ -475,21 +483,22 @@ function softLine(planet, f) {
       + (note ? ` NASA's note: “${note.text}”` : ""), reason);
   }
   if (l.kind === "D") {
-    const defMass = ((planet.papers.find((p) => p.default) || { values: {} }).values.mass || {});
+    const src = nasaPaper(planet, l), from = src ? ` (${src.ref}; NASA's default paper gives none)` : "";
+    const nasaRow = src || planet.papers.find((p) => p.default) || { values: {} };
+    const defMass = nasaRow.values.mass || {};
     const inJup = l.rule === "mass" && l.row == null && bigMass(planet) && defMass.j;
-    const ours = inJup ? `exoplanet.eu's mass is ${num(l.eu / JUP_M, 4)} Jupiters, NASA's ${num(defMass.j.v, 6)} Jupiters`
+    const ours = inJup ? `exoplanet.eu's mass is ${num(l.eu / JUP_M, 4)} Jupiters, NASA's ${num(defMass.j.v, 6)} Jupiters${from}`
       : l.row != null ? `exoplanet.eu's ${noun} is ${num(l.eu, 6)}${u} (${l.source}); NASA's row from ${l.matched} gives ${num(l.row, 6)}${u}`
-      : `exoplanet.eu's ${noun} is ${num(l.eu, 6)}${u}, NASA's ${num(l.nasa, 6)}${u}`;
+      : `exoplanet.eu's ${noun} is ${num(l.eu, 6)}${u}, NASA's ${num(l.nasa, 6)}${u}${from}`;
     if (l.bucket === "D-no-errors") {
       const gap = l.rule === "eccentricity" ? `${num(Math.abs(l.eu - l.nasa), 3)} apart` : `${Math.round(Math.abs(l.eu / l.nasa - 1) * 100)}% apart`;
-      const def = planet.papers.find((p) => p.default) || { values: {} };
-      const dv = def.values[l.rule] || {}, ev = (planet.eu || {})[l.rule] || {};
+      const dv = nasaRow.values[l.rule] || {}, ev = (planet.eu || {})[l.rule] || {};
       const missing = [dv.e1 == null && dv.e2 == null ? "NASA" : null, ev.em == null && ev.ep == null ? "exoplanet.eu" : null].filter(Boolean);
       const g = l.rule === "distance" && planet.gaia && planet.gaia.v ? ` Gaia DR3 gives ${num(planet.gaia.v, 6)} parsecs.` : "";
       return li(`${ours} (${gap}); ${missing.join(" and ") || "one side"} give${missing.length === 1 ? "s" : ""} no uncertainty.${g}`, reason);
     }
     if (l.bucket === "D-limit") {
-      const lim = (((planet.papers.find((p) => p.default) || { values: {} }).values[l.rule]) || {}).lim;
+      const lim = (nasaRow.values[l.rule] || {}).lim;
       const ev0 = (planet.eu || {})[l.rule] || {};
       const euLimit = ev0.em != null && Math.abs(Math.abs(ev0.em) - l.eu) <= 0.001 * l.eu && !ev0.ep;
       return li(euLimit ? `exoplanet.eu gives an upper limit of ${num(l.eu, 6)}${u} for the ${noun}; NASA's ${lim ? `${lim < 0 ? "lower" : "upper"} limit is` : "value is"} ${num(l.nasa, 6)}${u}.`
@@ -501,7 +510,8 @@ function softLine(planet, f) {
   }
   if (l.kind === "E") return li(`NASA's distance is ${num(l.nasa, 6)} parsecs, Gaia DR3's ${num(l.gaia, 6)}. Gaia flag: ${l.quality || "quality screen"}.`, reason);
   if (l.kind === "F") {
-    const why = { "older-paper": ` The sentence's number matches ${l.paper || "a published solution"} in NASA's archive, so the two parts were probably written from different sets of values.`,
+    const boxRef = ((planet.public || {})[l.rule] || {}).matched;
+    const why = { "older-paper": ` The sentence's number matches ${l.paper || "a published solution"} in NASA's archive${boxRef && boxRef !== l.paper ? `, the box's matches ${boxRef}` : ""}, so the two parts were probably written from different sets of values.`,
       "box-unknown": " The facts box says Unknown while the sentence gives a number.",
       calculated: " No paper gives it directly; both numbers look calculated, from different inputs." }[l.cause] || "";
     return el("li", { id: `f${f.n}`, class: why ? "has-why" : null, title: why ? why.trim() : null }, el("span", { class: "ref", text: `[${f.n}] ` }),
@@ -877,19 +887,28 @@ const counted = (e, k) => (Array.isArray(e[k]) ? e[k].length : null);
 const noteKinds = (checks) => { const parts = Object.entries(checks && typeof checks === "object" ? checks : {})
   .filter(([, v]) => Array.isArray(v)).map(([k, [a, b]]) => `${CHECK_NAME[k] || k} ${a} → ${b}`); return parts.length ? ` (${parts.join(", ")})` : ""; };
 
-const RUN_STATUS = { fresh: "new data", unchanged: "no change", copy: "unreachable: saved copy used", missing: "unreachable: not checked",
-  skipped: "skipped: its input isn't available this run", partial: "partly read: some pages failed and are retried next run", failed: "the check failed: findings kept from the last run" };
+const RUN_STATUS = { fresh: "checked: new data downloaded", unchanged: "checked: no change, nothing downloaded", copy: "unreachable: saved copy used",
+  missing: "unreachable: no saved copy, so its check didn't run", skipped: "skipped: its input isn't available this run",
+  partial: "partly read: some pages failed and are retried next run", failed: "the check failed: findings kept from the last run" };
+const WARN = ["copy", "missing", "partial", "failed"];
+const SOURCE_NAME = { "NASA archive": "NASA Exoplanet Archive: planet table", "NASA composite table": "NASA Exoplanet Archive: combined table",
+  "NASA notes": "NASA Exoplanet Archive: system notes", "NASA catalog": "NASA Exoplanet Catalog", "exoplanet.eu": "exoplanet.eu: catalogue",
+  "exoplanet.eu index": "exoplanet.eu: list of planet pages", "exoplanet.eu pages": "exoplanet.eu: planet pages" };
+const fmtTime = (t) => (t ? `${new Date(t).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: "UTC" })} UTC` : "");
 function sourceStatus() {
   const sources = ((state.meta.run || {}).sources) || {};
   return Object.entries(sources).map(([name, r]) => ({ name, status: r.status, text: RUN_STATUS[r.status] || r.status,
-    date: (r.copy_from || "").slice(0, 10), checked: (r.checked_utc || "").slice(0, 10) }));
+    label: SOURCE_NAME[name] || (/^check [A-F]$/.test(name) ? `check: ${CHECK_NAME[name.slice(-1)]}` : name),
+    date: (r.copy_from || "").slice(0, 10), checked: r.checked_utc || "", lastOk: r.last_ok_utc || "" }));
 }
+const lastChecked = () => sourceStatus().map((x) => x.checked).sort().pop() || "";
 
 function sourceNote() {
-  const down = (x) => ["copy", "missing", "partial", "failed"].includes(x.status);
+  const down = (x) => WARN.includes(x.status);
   const all = sourceStatus(), siteDown = new Set(all.filter(down).map((x) => x.name));
+  const reached = (x) => (x.lastOk && x.lastOk.slice(0, 10) !== x.date ? `, last reached ${fmtDate(x.lastOk.slice(0, 10))}` : "");
   const notes = all.filter((x) => down(x) && !(x.name === "exoplanet.eu pages" && siteDown.has("exoplanet.eu")))
-    .map((x) => (x.status === "copy" && x.date ? `${x.name}: unreachable, copy from ${fmtDate(x.date)}` : `${x.name}: ${RUN_STATUS[x.status]}`));
+    .map((x) => (x.status === "copy" && x.date ? `${x.name}: unreachable, copy from ${fmtDate(x.date)}${reached(x)}` : `${x.name}: ${RUN_STATUS[x.status]}${reached(x)}`));
   const box = document.getElementById("source-note");
   box.hidden = !notes.length;
   box.textContent = notes.join(" · ");
@@ -944,16 +963,27 @@ function updateChart(updates, series, { W, H = 150, axis = true, label = "", lin
 
 function renderChangesLine() {
   const u = state.updates || [], now = u[0], before = u[1], line = document.getElementById("changes-line");
-  if (!now) { line.replaceChildren(); return; }
+  const checked = lastChecked() ? `Sources last checked ${fmtTime(lastChecked())}. ` : "";
+  if (!now) { line.replaceChildren(checked); return; }
   const nf = counted(now, "new_findings") || 0, rf = counted(now, "resolved_findings") || 0;
-  line.replaceChildren(before ? `Latest update, ${fmtDate(now.date)}: ${plural(nf, "new finding")}, ${rf.toLocaleString()} resolved. ` : `Changes are tracked from ${fmtDate(now.date)}. `,
-    el("a", { href: "#/changes", text: "see changes" }));
+  line.replaceChildren(checked, before ? `Latest update, ${fmtDate(now.date)}: ${plural(nf, "new finding")}, ${rf.toLocaleString()} resolved. ` : `Changes are tracked from ${fmtDate(now.date)}. `,
+    el("a", { href: "#/changes", text: "see changes and source status" }));
 }
 
 function renderChanges() {
   const box = document.getElementById("changes"), u = state.updates || [], now = u[0], before = u[1];
   const out = [el("h1", { class: "page-title", text: "Changes" }),
     el("p", { class: "prose", text: "Each daily update that changed something is recorded here: findings new and resolved, planets added or removed, and notes that changed." })];
+  const status = sourceStatus();
+  if (status.length) out.push(el("h2", { class: "section-title", text: "data source status" }),
+    el("p", { class: "prose", text: "ExoDiff runs once a day. Each run asks every source whether anything changed and downloads only what did. A run that finds nothing new is shown here but adds nothing to the list of updates below." }),
+    el("table", { class: "data" },
+      el("thead", {}, el("tr", {}, ...["source", "latest run", "last checked", "last successful check", "data in use from"].map((h) => el("th", { text: h })))),
+      el("tbody", {}, ...status.map((x) => el("tr", {}, el("td", { text: x.label }),
+        el("td", { class: WARN.includes(x.status) ? "flag-word" : "muted", text: x.text }),
+        el("td", { text: fmtTime(x.checked) || "–" }), el("td", { class: x.lastOk && x.lastOk !== x.checked ? "flag-word" : null, text: fmtTime(x.lastOk) || (x.name.startsWith("check ") ? "–" : "not recorded") }),
+        el("td", { text: x.date ? fmtDate(x.date) : "–" }))))),
+    el("p", { class: "muted", text: "Last checked: when the run last tried the source. Last successful check: the last time it answered; for a source already unreachable when this record began, the time its saved copy was downloaded. Data in use from: when the copy ExoDiff uses was downloaded. A saved copy is used only while a source can't be reached." }));
   if (!now) { box.replaceChildren(...out, el("p", { class: "prose", text: "No update has been recorded yet." })); return; }
   const pad = getComputedStyle(box), W = Math.max(280, Math.min(900, (box.clientWidth - parseFloat(pad.paddingLeft) - parseFloat(pad.paddingRight)) || 760));
   const arrow = (k, word) => `${word} ${now[k].toLocaleString()}${before ? ` (${signedN(now[k] - before[k])})` : ""}`;
@@ -962,12 +992,6 @@ function renderChanges() {
     el("p", { class: "prose", text: `${fmtDate(now.date)}: ${CAUSE[now.cause] || now.cause}. ${before ? `Compared with ${fmtDate(before.date)}: ${counts}` : counts[0].toUpperCase() + counts.slice(1)}.` }));
   if (arr(now.not_checked).length) out.push(el("p", { class: "prose", text: `Not checked in this update: ${arr(now.not_checked).map((k) => CHECK_NAME[k] || k).join(", ")}. Its findings aren't shown until it is checked again, and aren't counted as resolved.` }));
   if (arr(now.checked_again).length) out.push(el("p", { class: "prose", text: `Checked again in this update after being unreachable: ${arr(now.checked_again).map((k) => CHECK_NAME[k] || k).join(", ")}. Its findings return without counting as new.` }));
-  const status = sourceStatus();
-  if (status.length) out.push(el("p", { class: "muted", text: `Sources in the latest run (${fmtDate(status[0].checked)}):` }),
-    el("table", { class: "data" }, el("thead", {}, el("tr", {}, ...["source", "this run", "data from"].map((h) => el("th", { text: h })))),
-      el("tbody", {}, ...status.map((x) => el("tr", {}, el("td", { text: x.name }),
-        el("td", { class: ["copy", "missing", "partial", "failed"].includes(x.status) ? "flag-word" : "muted", text: x.text }),
-        el("td", { text: x.date ? fmtDate(x.date) : "–" }))))));
   out.push(...resultsSection());
 
   out.push(el("h2", { class: "section-title", text: "findings over time" }),
