@@ -22,6 +22,7 @@ jobs:
       contents: read
     outputs:
       down: ${{ steps.summary.outputs.down }}
+      down_detail: ${{ steps.summary.outputs.down_detail }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -113,14 +114,34 @@ jobs:
 
   alert:
     needs: [build, deploy]
-    if: needs.build.outputs.down != ''
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    permissions: {}
+    permissions:
+      issues: write
     steps:
-      - name: A source couldn't be reached
+      - name: Open, update or close the issue for sources that couldn't be read
         env:
           DOWN: ${{ needs.build.outputs.down }}
+          DETAIL: ${{ needs.build.outputs.down_detail }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          echo "::error::Unreachable in this run: $DOWN. The site was published with the saved copies; the run summary has the details."
-          exit 1
+          title="Daily run: a source is down or incomplete"
+          today=$(date -u +%Y-%m-%d)
+          open=$(gh issue list --state open --search "author:app/github-actions" --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -n 1)
+          list() { printf '%s\n' "$1" | tr ',' '\n' | sed 's/^ *//' | grep -v '^$' | sort; }
+          if [ -n "$DOWN" ]; then
+            body=$(printf 'Latest run (%s): %s. The site was published with the saved copies. This issue closes itself when every source answers again.\n\n%s\n\nSources: %s' "$today" "$DETAIL" "$RUN_URL" "$DOWN")
+            if [ -z "$open" ]; then
+              gh issue create --title "$title" --body "$body"
+            else
+              before=$(gh issue view "$open" --json body --jq .body | sed -n 's/^Sources: //p')
+              gh issue edit "$open" --body "$body"
+              added=$(comm -13 <(list "$before") <(list "$DOWN") | paste -sd, - | sed 's/,/, /g')
+              if [ -n "$added" ]; then gh issue comment "$open" --body "Also down or incomplete since $today: $added."; fi
+            fi
+            echo "::warning::Down or incomplete in this run: $DOWN. The site was published with the saved copies."
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --comment "Every source answered in the run of $today."
+          fi
