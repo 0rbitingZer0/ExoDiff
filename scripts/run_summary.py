@@ -22,9 +22,10 @@ def main() -> int:
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(f"## Sources (run started {run.get('started_utc')})\n\n{table}\n")
     down = runlog.down(ROOT)
+    detail = ", ".join(f"{n} ({WORDS[run['sources'][n]['status']].lower()})" for n in down)
     if os.environ.get("GITHUB_OUTPUT"):
         with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
-            f.write(f"down={', '.join(down)}\n")
+            f.write(f"down={', '.join(down)}\ndown_detail={detail}\n")
     return 0
 
 

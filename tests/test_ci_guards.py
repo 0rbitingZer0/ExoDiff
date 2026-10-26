@@ -128,7 +128,7 @@ def test_local_history_files_pass_the_commit_check():
 
 WORKFLOWS = sorted((ROOT / ".github/workflows").glob("*.y*ml"))
 PERMISSIONS = {"build": {"contents": "read"}, "save-history": {"contents": "write"},
-               "deploy": {"pages": "write", "id-token": "write"}, "alert": {}}
+               "deploy": {"pages": "write", "id-token": "write"}, "alert": {"issues": "write"}}
 
 
 def _jobs(wf: str) -> dict:
@@ -156,6 +156,8 @@ def test_workflows_cannot_be_triggered_or_steered_by_outsiders():
         assert _jobs(wf) == PERMISSIONS
         for line in re.findall(r"uses:\s*(\S+)", wf):
             assert line.startswith("actions/") and re.search(r"@[0-9a-f]{40}$", line), line
+        alert = wf.split("\n  alert:\n", 1)[1]
+        assert "actions/checkout" not in alert and 'author:app/github-actions' in alert and "exit 1" not in alert
         run_blocks = re.findall(r"run: \|\n((?:\s{10,}.*\n)+)|run: (.*)", wf)
         for block, single in run_blocks:
             assert "${{" not in block + single, (block + single)[:80]
@@ -180,3 +182,19 @@ def test_a_crashed_check_alerts_but_a_missing_input_does_not(tmp_path, monkeypat
     assert runlog.down(tmp_path) == []
     mod.skip("KeyError: 'r_med_geo'", crashed=True)
     assert runlog.down(tmp_path) == ["check E"]
+
+
+def test_the_alert_names_each_source_and_what_went_wrong(tmp_path, monkeypatch):
+    from exodiff import runlog
+    mod = load("run_summary")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    runlog.start(tmp_path)
+    runlog.record(tmp_path, "NASA archive", "unchanged")
+    runlog.record(tmp_path, "exoplanet.eu", "copy", copy_from="2026-10-15T21:36:18+00:00", error="timed out | <b>")
+    runlog.record(tmp_path, "NASA notes", "partial")
+    out = tmp_path / "out.txt"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out))
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+    mod.main()
+    assert out.read_text().splitlines() == ["down=NASA notes, exoplanet.eu",
+        "down_detail=NASA notes (partly read: failed pages retried next run), exoplanet.eu (unreachable: saved copy used)"]
