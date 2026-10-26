@@ -10,6 +10,8 @@ DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 CHECKS = set("ABCDEF")
 CAUSES = {"first run", "new data", "rule change", "new data and a rule change", "same data re-checked"}
+OK = {"fresh", "unchanged"}
+STATUSES = {*OK, "copy", "missing", "skipped", "partial", "failed"}
 EXPECTED_QUERY = "SELECT * FROM ps WHERE soltype = 'Published Confirmed'"
 LISTS = ("new_findings", "resolved_findings", "new_planets", "removed_planets", "notes_changed")
 ENTRY_KEYS = {"date", "data", "code", "planets", "planets_with_findings", "findings", "notes", "by_check", "cause",
@@ -84,12 +86,34 @@ def _entry(e) -> bool:
     return True
 
 
+def _time(x):
+    try:
+        t = datetime.fromisoformat(x) if isinstance(x, str) and len(x) <= 40 else None
+    except ValueError:
+        return None
+    return t if t is not None and t.utcoffset() == timedelta(0) else None
+
+
+def _sources(run) -> list[str]:
+    sources = run.get("sources", {})
+    if not (isinstance(sources, dict) and all(_str(n, 80) and isinstance(r, dict) for n, r in sources.items())):
+        return ["meta.json: run sources not the expected shape"]
+    for name, r in sources.items():
+        checked, last_ok = _time(r.get("checked_utc")), _time(r.get("last_ok_utc"))
+        if not (r.get("status") in STATUSES and checked and all(r.get(k) is None or _time(r[k]) for k in ("copy_from", "last_ok_utc"))):
+            return [f"meta.json: run record of {name} not the expected shape"]
+        if last_ok and (last_ok > checked or (r["status"] not in OK and last_ok == checked)):
+            return [f"meta.json: {name} has a last successful check that this run doesn't support"]
+    return []
+
+
 def _meta(meta) -> list[str]:
     out = []
     if not (isinstance(meta, dict) and HEX64.match(str(meta.get("snapshot_sha256", ""))) and isinstance(meta.get("run"), dict)):
         return ["meta.json: not the expected shape"]
     if meta.get("query") != EXPECTED_QUERY:
         out.append("meta.json: the archive query isn't the expected one")
+    out += _sources(meta["run"])
     for k in ("raw_files", "published"):
         if k in meta and not (isinstance(meta[k], dict) and all(_str(n, 200) and HEX64.match(str(h)) for n, h in meta[k].items())):
             out.append(f"meta.json: {k} not file -> SHA-256")

@@ -7,7 +7,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from exodiff import runlog
-from exodiff.overview_notes import fetch_overviews, latest_snapshot
+from exodiff.overview_notes import STEM, fetch_overviews, latest_snapshot
+from exodiff.raw_store import saved_at
 
 PROCESSED = ROOT / "data" / "processed"
 
@@ -37,7 +38,9 @@ def main() -> int:
     try:
         result = fetch_overviews(hosts, ROOT, updated=host_updates(), progress=True)
     except RuntimeError as exc:
-        runlog.record(ROOT, "NASA notes", "copy" if latest_snapshot(ROOT).get("systems") else "missing", error=str(exc)[:200])
+        saved = latest_snapshot(ROOT).get("systems")
+        runlog.record(ROOT, "NASA notes", "copy" if saved else "missing", copy_from=saved_at(ROOT / "data/raw", STEM) if saved else None,
+                      error=str(exc)[:200])
         print(f"WARNING: overview notes not updated: {exc}", file=sys.stderr)
         return 0
     status = "partial" if result["failures"] else "unchanged" if result["unchanged"] else "fresh"

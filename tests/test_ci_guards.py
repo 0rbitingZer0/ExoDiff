@@ -87,6 +87,22 @@ def test_history_files_are_checked_before_commit(tmp_path):
     assert check.problems(tmp_path / "ok") == ["meta.json: the archive query isn't the expected one"]
 
 
+def test_a_failed_check_cannot_be_published_as_a_successful_one(tmp_path):
+    check = load("check_history")
+    folder = _history(tmp_path / "h")
+    meta = json.loads((folder / "meta.json").read_text())
+    t = "2026-10-26T06:17:00+00:00"
+    source = lambda **r: {"status": "copy", "checked_utc": t, "copy_from": "2026-10-15T21:36:18.747289+00:00",
+                          "last_ok_utc": "2026-10-20T21:41:33+00:00", **r}
+    for good in (source(), source(status="unchanged", last_ok_utc=t), source(status="missing", copy_from=None, last_ok_utc=None)):
+        (folder / "meta.json").write_text(json.dumps({**meta, "run": {"sources": {"exoplanet.eu": good}}}))
+        assert check.problems(folder) == [], good
+    for bad in (source(last_ok_utc=t), source(status="partial", last_ok_utc=t), source(last_ok_utc="2026-10-27T00:00:00+00:00"),
+                source(status="fine"), source(checked_utc="yesterday"), source(last_ok_utc="2026-10-20"), "copy"):
+        (folder / "meta.json").write_text(json.dumps({**meta, "run": {"sources": {"exoplanet.eu": bad}}}))
+        assert check.problems(folder), bad
+
+
 def test_the_committed_past_cannot_be_rewritten(tmp_path):
     check = load("check_history")
     old = _history(tmp_path / "old")

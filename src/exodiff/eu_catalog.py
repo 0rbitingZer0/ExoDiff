@@ -213,11 +213,22 @@ LETTERS_MATCH = 0.01
 CLOSE_BARS = 2.0
 
 
-def check_d(nasa: pd.DataFrame, eu: pd.DataFrame, join: dict, sources: dict | None = None) -> tuple[pd.DataFrame, dict]:
+def nasa_pick(group: pd.DataFrame, comp_row, col: str):
+    src = "pl_bmasse" if col == "pl_masse" else col
+    if comp_row is None or _num(comp_row.get(src)) is None or (src == "pl_bmasse" and _text(comp_row.get("pl_bmassprov")) != "Mass"):
+        return None
+    ref = parse_reference(_text(comp_row.get(f"{src}_reflink")))["label"]
+    return next((r for _, r in group.iterrows() if ref and parse_reference(_text(r.get("pl_refname")))["label"] == ref
+                 and _num(r.get(col)) == _num(comp_row.get(src))), None)
+
+
+def check_d(nasa: pd.DataFrame, eu: pd.DataFrame, join: dict, sources: dict | None = None,
+            composite: pd.DataFrame | None = None) -> tuple[pd.DataFrame, dict]:
     from .eu_sources import describe, held_by_nasa
     sources = sources or {}
     eu_by_name = eu.set_index("name")
     rows_by_planet = {name: g for name, g in nasa.groupby("pl_name")}
+    comp = composite.drop_duplicates("pl_name").set_index("pl_name") if composite is not None and len(composite) else None
     siblings = _siblings(nasa) if "hostname" in nasa else {}
     out = []
     for planet, group in sorted(rows_by_planet.items()):
@@ -231,11 +242,16 @@ def check_d(nasa: pd.DataFrame, eu: pd.DataFrame, join: dict, sources: dict | No
         ep_, dp_ = (_num(e.get("orbital_period")) if e is not None else None), (_num(default.get("pl_orbper")) if default is not None else None)
         planet_letters = bool(ep_ and dp_ and abs(ep_ / dp_ - 1) > 0.05
                               and any(abs(ep_ / v - 1) <= LETTERS_MATCH for v in siblings.get(planet, {}).get("period", [])))
+        comp_row = comp.loc[planet] if comp is not None and planet in comp.index else None
         for field, (eu_col, factor, col) in FIELDS.items():
             rec = {"pl_name": planet, "field": field, "eu_name": eu_name, "eu_value": None, "nasa_default": None,
-                   "matched_reference": None}
+                   "matched_reference": None, "nasa_from": None}
             ev = _num(e.get(eu_col)) if e is not None else None
-            dv = _num(default.get(col)) if default is not None and col in default else None
+            base = default
+            if default is not None and _num(default.get(col)) is None and (pick := nasa_pick(group, comp_row, col)) is not None:
+                base = pick
+                rec["nasa_from"] = parse_reference(_text(pick.get("pl_refname")))["label"]
+            dv = _num(base.get(col)) if base is not None and col in base else None
             if ev is None or dv is None:
                 rec.update(bucket="D-absent", eu_value=ev * factor if ev is not None else None, nasa_default=dv)
                 out.append(rec)
@@ -277,15 +293,15 @@ def check_d(nasa: pd.DataFrame, eu: pd.DataFrame, join: dict, sources: dict | No
                 return 0.5 * 10 ** (-_decimals(v)) if v is not None else 0.0
 
             row_iv = lambda r: (lambda v, e1, e2: _interval(v, e2, e1))(*nasa_of(r))
-            na_iv = row_iv(default)
-            dv_cmp = nasa_of(default)[0] if nasa_of(default)[0] is not None else dv
-            limit = _num(default.get(col + "lim")) if col + "lim" in default else None
+            na_iv = row_iv(base)
+            dv_cmp = nasa_of(base)[0] if nasa_of(base)[0] is not None else dv
+            limit = _num(base.get(col + "lim")) if col + "lim" in base else None
             eu_upper = em is not None and value > 0 and abs(abs(em) - value) <= 0.001 * value and not ep
             z = None
             if planet_letters and field != "distance":
                 bucket, ref = "D-letters", None
-            elif same_row(default):
-                bucket, ref = "D-same", ref_of(default)
+            elif same_row(base):
+                bucket, ref = "D-same", ref_of(base)
             elif other := [r for _, r in group.iterrows() if same_row(r)]:
                 pick = next((r for r in other if held and ref_of(r) == held["label"]), other[0])
                 bucket, ref = "D-other-paper", ref_of(pick)
@@ -300,11 +316,11 @@ def check_d(nasa: pd.DataFrame, eu: pd.DataFrame, join: dict, sources: dict | No
                 bucket, ref = "D-within-errors", None
             elif field != "distance" and any(abs(value / v - 1) <= LETTERS_MATCH for v in siblings.get(planet, {}).get(field, [])):
                 bucket, ref = "D-letters", None
-            elif field == "distance" and _catalogue_distance(default):
+            elif field == "distance" and _catalogue_distance(base):
                 bucket, ref = "D-catalogue-distance", None
             else:
-                z = gap_in_error_bars(dv_cmp, na_iv, value, _interval(value, em, ep), tol + nasa_rounding(default))
-                overlapping = [r for _, r in group.iterrows() if _num(r.get("default_flag")) != 1
+                z = gap_in_error_bars(dv_cmp, na_iv, value, _interval(value, em, ep), tol + nasa_rounding(base))
+                overlapping = [r for i, r in group.iterrows() if _num(r.get("default_flag")) != 1 and i != base.name
                                and _overlap(eu_iv, row_iv(r))]
                 row = next((r for r in overlapping if not pubs or (held is not None and ref_of(r) == held["label"])), None)
                 if row is not None:
@@ -339,7 +355,8 @@ def check_d(nasa: pd.DataFrame, eu: pd.DataFrame, join: dict, sources: dict | No
     stats = {"planet_fields": int(len(result)), "compared": int(len(compared)),
              "by_bucket": {b: int((result["bucket"] == b).sum()) for b in FINE_WHEN},
              "by_field": {f: {b: int(n) for b, n in g["bucket"].value_counts().items()} for f, g in result.groupby("field")},
-             "join": join["stats"], "letters_planets": int(result.loc[result["bucket"] == "D-letters", "pl_name"].nunique())}
+             "join": join["stats"], "letters_planets": int(result.loc[result["bucket"] == "D-letters", "pl_name"].nunique()),
+             "compared_via_composite": int((result["nasa_from"].notna() & (result["bucket"] != "D-absent")).sum())}
     if len(compared):
         stats["share_same_or_other_paper"] = round(float(compared["bucket"].isin(["D-same", "D-other-paper"]).mean()), 4)
         stats["share_disagree"] = round(float(compared["bucket"].isin(OPEN_BUCKETS).mean()), 4)

@@ -5,7 +5,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from exodiff import runlog
-from exodiff.eu_catalog import fetch_eu, fetch_eu_index, latest_eu_index, latest_eu_manifest
+from exodiff.eu_catalog import EU_INDEX_STEM, fetch_eu, fetch_eu_index, latest_eu_index, latest_eu_manifest
+from exodiff.raw_store import saved_at
 
 
 def main() -> int:
@@ -21,15 +22,17 @@ def main() -> int:
                   copy_from=result["retrieved_at_utc"], rows=result["rows"])
     print(f"exoplanet.eu: {result['rows']:,} planets ({'no change' if result['unchanged'] else 'new data'}); SHA-256 {result['sha256']}")
     if result["unchanged"] and latest_eu_index(ROOT):
-        runlog.record(ROOT, "exoplanet.eu index", "unchanged")
+        runlog.record(ROOT, "exoplanet.eu index", "unchanged", copy_from=saved_at(ROOT / "data/raw", EU_INDEX_STEM))
         return 0
     try:
         index = fetch_eu_index(ROOT)
     except RuntimeError as exc:
-        runlog.record(ROOT, "exoplanet.eu index", "copy" if latest_eu_index(ROOT) else "missing", error=str(exc)[:200])
+        saved = latest_eu_index(ROOT)
+        runlog.record(ROOT, "exoplanet.eu index", "copy" if saved else "missing",
+                      copy_from=saved_at(ROOT / "data/raw", EU_INDEX_STEM) if saved else None, error=str(exc)[:200])
         print(f"WARNING: exoplanet.eu index not updated: {exc}", file=sys.stderr)
         return 0
-    runlog.record(ROOT, "exoplanet.eu index", "fresh", planets=index["planets"])
+    runlog.record(ROOT, "exoplanet.eu index", "fresh", copy_from=saved_at(ROOT / "data/raw", EU_INDEX_STEM), planets=index["planets"])
     print(f"exoplanet.eu index: {index['planets']:,} planet pages")
     return 0
 

@@ -112,6 +112,23 @@ def test_run_record_lists_sources_that_were_down(tmp_path):
     assert json.loads((tmp_path / "reports/run.json").read_text())["sources"]["exoplanet.eu"]["error"] == "timed out"
 
 
+def test_last_successful_check_is_kept_through_an_outage():
+    day = lambda d, h=6: f"2026-10-{d}T{h:02d}:17:00+00:00"
+    run = lambda **s: {"started_utc": day(26), "sources": {n: {"checked_utc": day(26), **r} for n, r in s.items()}}
+    first = runlog.for_site(run(archive={"status": "unchanged", "copy_from": day(20)}, gaia={"status": "fresh", "copy_from": day(26)},
+                                eu={"status": "copy", "copy_from": day(15), "error": "timed out"}, notes={"status": "partial", "copy_from": day(26, 7)},
+                                simbad={"status": "missing", "copy_from": None}))
+    ok = {n: r["last_ok_utc"] for n, r in first["sources"].items()}
+    assert ok == {"archive": day(26), "gaia": day(26), "eu": day(15), "notes": None, "simbad": None}
+    assert "error" not in first["sources"]["eu"] and first["sources"]["archive"]["copy_from"] == day(20)
+    later = run(archive={"status": "copy", "copy_from": day(20)}, gaia={"status": "unchanged", "copy_from": day(26)},
+                eu={"status": "copy", "copy_from": day(15)}, notes={"status": "partial", "copy_from": day(27)},
+                simbad={"status": "skipped"})
+    later = {n: {**r, "checked_utc": day(27)} for n, r in later["sources"].items()}
+    ok = {n: r["last_ok_utc"] for n, r in runlog.for_site({"sources": later}, first)["sources"].items()}
+    assert ok == {"archive": day(26), "gaia": day(27), "eu": day(15), "notes": None, "simbad": None}
+
+
 def test_hostile_or_huge_pages_are_refused_not_parsed():
     import time
     from exodiff.eu_sources import parse_eu_page

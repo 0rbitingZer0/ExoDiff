@@ -5,12 +5,32 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 RUN_FILE = Path("reports") / "run.json"
+OK = ("fresh", "unchanged")
 DOWN = ("copy", "missing")
 ALERT = (*DOWN, "partial", "failed")
 
 
 def now_utc() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def _when(text):
+    try:
+        return datetime.fromisoformat(text)
+    except (TypeError, ValueError):
+        return None
+
+
+def for_site(run: dict, previous: dict | None = None) -> dict:
+    before = (previous or {}).get("sources") or {}
+    sources = {}
+    for name, r in run["sources"].items():
+        r = {k: v for k, v in r.items() if k != "error"}
+        saved = r.get("copy_from") if r["status"] == "copy" else None
+        known = [t for t in ((before.get(name) or {}).get("last_ok_utc"), saved) if _when(t)]
+        r["last_ok_utc"] = r["checked_utc"] if r["status"] in OK else max(known, key=_when, default=None)
+        sources[name] = r
+    return {**run, "sources": sources}
 
 
 def start(project_root: Path) -> None:

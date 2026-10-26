@@ -59,6 +59,8 @@ def main() -> int:
         eu_manifest = json.loads(eu_files[-1].with_name(eu_files[-1].name.replace(".csv", ".manifest.json")).read_text(encoding="utf-8"))
         eu = pd.read_csv(eu_files[-1], low_memory=False)
         nasa = pd.read_csv(ROOT / "data/processed/nasa_ps_confirmed_latest.csv", low_memory=False)
+        comp_files = sorted((ROOT / "data/raw").glob("nasa_pscomppars_*[0-9]Z.csv"))
+        composite = pd.read_csv(comp_files[-1], low_memory=False) if comp_files else None
         join = join_eu(eu, nasa["pl_name"].dropna().unique())
         idents = latest_idents(ROOT)
         if idents:
@@ -68,19 +70,20 @@ def main() -> int:
             join["ambiguous_simbad"] = j2["ambiguous"]
             join["stats"].update(matched=len(join["matched"]), matched_via_simbad=len(j2["matched"]),
                                  ambiguous_simbad=len(j2["ambiguous"]))
-        result, stats = check_d(nasa, eu, join)
+        result, stats = check_d(nasa, eu, join, composite=composite)
         sources = latest_sources(ROOT)
         if "--fetch-sources" in sys.argv:
             sources = read_sources(result, join, eu) or sources
         if sources:
-            result, stats = check_d(nasa, eu, join, sources)
+            result, stats = check_d(nasa, eu, join, sources, composite)
             stats["eu_sources_pages"] = len(sources)
     except Exception as exc:
         return skip(f"{type(exc).__name__}: {exc}", crashed=True)
     result.to_csv(OUT_CSV, index=False)
     stats.update({"archive_sha256": archive_manifest["sha256_raw_response"], "eu_snapshot": eu_files[-1].name,
                   "eu_sha256": hashlib.sha256(eu_files[-1].read_bytes()).hexdigest(),
-                  "eu_retrieved_at_utc": eu_manifest.get("retrieved_at_utc")})
+                  "eu_retrieved_at_utc": eu_manifest.get("retrieved_at_utc"),
+                  "composite_snapshot": comp_files[-1].name if comp_files else None})
     OUT_JSON.write_text(json.dumps(stats, indent=2), encoding="utf-8")
     print(json.dumps({k: stats[k] for k in ("compared", "by_bucket", "share_same_or_other_paper", "share_disagree", "join")}, indent=1))
     return 0

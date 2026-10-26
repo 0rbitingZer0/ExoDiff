@@ -99,7 +99,7 @@ NEW = {
 
 "card/eu": ("NASA's number vs exoplanet.eu's number for the same planet.",
             "Two independently maintained catalogues draw on overlapping published papers, so their numbers aren't independent measurements. They may pick different papers, conventions or derived values, so **a difference isn't automatically a copying error**. When the numbers clearly differ, exoplanet.eu's page tells us **which paper it used**, and we check whether NASA has it.",
-            "exoplanet.eu CSV (CC BY 4.0) plus its planet pages for the cited paper; values compared in NASA's units. " + STAT),
+            "exoplanet.eu CSV (CC BY 4.0) plus its planet pages for the cited paper; values compared in NASA's units. NASA's number is its default paper's; where that paper gives none, the paper NASA's combined table (PSCompPars) takes it from. " + STAT),
 "D/D-same": ("NASA vs exoplanet.eu.", "The same number within the digits shown (after unit conversion).", "Rounding of exoplanet.eu's digits + 0.3% for radius and mass, which are converted from Jupiter units (an ExoDiff convention)."),
 "D/D-other-paper": ("NASA vs exoplanet.eu.", "exoplanet.eu shows the number from a different paper that NASA also holds. The catalogues selected different published solutions; the difference alone doesn't establish an error.", ""),
 "D/D-within-errors": ("NASA vs exoplanet.eu.", "Different numbers, but their uncertainty ranges overlap: compatible under the stated uncertainties.", "Ranges widened by rounding and unit conversion."),
@@ -120,7 +120,7 @@ NEW = {
 "D/D-catalogue-distance": ("NASA's distance vs exoplanet.eu's.", "NASA's distance comes from a star catalogue rather than a paper, and the two catalogues may use different distance sources or methods. Not shown here; check E compares the star's distance with Gaia directly.", "An internal label only; it never appears on a page."),
 "D/D-no-errors": ("NASA vs exoplanet.eu.", "At least one side gives no usable uncertainty, so ExoDiff can't judge how much the gap matters. Shown as a note only when they are far apart.", "Note shown when the values differ by more than 10% of NASA's value; for orbit stretch (eccentricity, 0 to 1), when they differ by more than 0.1 in absolute terms. ExoDiff's thresholds."),
 "D/D-theoretical": ("NASA vs exoplanet.eu.", "exoplanet.eu labels its number theoretical (its own classification, covering various model methods), so it's left out of this measurement-to-measurement check.", ""),
-"D/D-absent": ("NASA vs exoplanet.eu.", "One catalogue doesn't list this value.", ""),
+"D/D-absent": ("NASA vs exoplanet.eu.", "One catalogue doesn't list this value.", "For NASA: its default paper gives none, and its combined table has none, calculates it, or takes it from a source with no row in NASA's planet table. Mass: only when the combined table's mass is a true mass, not a minimum mass."),
 
 "card/gaia": ("NASA's distance to the star vs the distance from Gaia, a European space telescope that maps over a billion stars.",
               "Most of NASA's distances (95%) come from a star catalogue built on Gaia's 2018 data; Gaia has since published updated distances.\n\nWhen the two distances are **5% or more apart and their uncertainty ranges don't overlap**, it is flagged for investigation: **NASA's value may predate the update**. When Gaia's own quality flags warn about the star, it is a note.",

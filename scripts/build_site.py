@@ -324,8 +324,7 @@ def main() -> int:
         "check_e": e_stats,
         "check_f": f_stats,
         "nasa_notes": {"shown": notes_shown, "overview_sha256": NOTES_SHA or None},
-        "run": {**runlog.load(ROOT), "sources": {name: {k: v for k, v in r.items() if k != "error"}
-                                                 for name, r in runlog.load(ROOT)["sources"].items()}},
+        "run": runlog.for_site(runlog.load(ROOT), previous_meta.get("run")),
         "letters_confirmed_by_alias": letters_confirmed,
         "planets": len(planet_index),
         "row_checks_run": (report.get("row_self_consistency") or {}).get("checkable_rows", 0)
