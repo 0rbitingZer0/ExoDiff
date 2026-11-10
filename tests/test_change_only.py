@@ -58,26 +58,45 @@ def test_eu_pages_read_only_when_missing_or_updated(tmp_path):
     assert "https://e/c" in seen[-2:] and later["requested"] == 2
 
 
-def test_gaia_and_simbad_ask_only_for_new_stars(tmp_path):
+def test_gaia_asks_only_for_new_stars(tmp_path):
     from exodiff.gaia import fetch_gaia
-    from exodiff.simbad import fetch_idents
     asked = []
 
     class Archive:
         def post(self, url, data, timeout):
-            asked.append(data.get("QUERY") or data.get("query"))
-            if "gaiaedr3_distance" in asked[-1]:
-                ids = [int(x) for x in asked[-1].rsplit("(", 1)[1].rstrip(")").split(",")]
-                return Response("source_id,r_med_geo,r_lo_geo,r_hi_geo\n" + "".join(f"{i},10,9,11\n" for i in ids))
-            names = asked[-1].rsplit("(", 1)[1].rstrip(")").replace("'", "").split(",")
-            return Response("gaia,ident\n" + "".join(f"{n},{n}\n{n},HD {n[-1]}\n" for n in names))
+            asked.append(data["QUERY"])
+            ids = [int(x) for x in asked[-1].rsplit("(", 1)[1].rstrip(")").split(",")]
+            return Response("source_id,r_med_geo,r_lo_geo,r_hi_geo\n" + "".join(f"{i},10,9,11\n" for i in ids))
     fetch_gaia([1, 2], tmp_path, session=Archive())
     result = fetch_gaia([1, 2, 3], tmp_path, session=Archive())
     assert "IN (3)" in asked[-1] and result["rows"] == 3 and not result["unchanged"]
     assert fetch_gaia([1, 2, 3], tmp_path, session=Archive())["unchanged"] and len(asked) == 2
-    fetch_idents(["Gaia DR3 1"], tmp_path, session=Archive())
-    fetch_idents(["Gaia DR3 1", "Gaia DR3 2"], tmp_path, session=Archive())
-    assert "'Gaia DR3 2'" in asked[-1] and "'Gaia DR3 1'" not in asked[-1]
+
+
+def test_simbad_asks_every_star_each_run_and_says_unchanged_only_on_the_same_answer(tmp_path):
+    import requests
+    from exodiff.simbad import fetch_idents, latest_idents
+    asked, renamed = [], {}
+
+    class Simbad:
+        def post(self, url, data, timeout):
+            if renamed.get("down"):
+                raise requests.ConnectionError("down")
+            asked.append(data["query"])
+            names = asked[-1].rsplit("(", 1)[1].rstrip(")").replace("'", "").split(",")
+            return Response("gaia,ident\n" + "".join(f"{n},{n}\n{n},{renamed.get(n, 'HD ' + n[-1])}\n" for n in names))
+    fetch_idents(["Gaia DR3 1"], tmp_path, session=Simbad())
+    second = fetch_idents(["Gaia DR3 1", "Gaia DR3 2"], tmp_path, session=Simbad())
+    assert "'Gaia DR3 1'" in asked[-1] and "'Gaia DR3 2'" in asked[-1] and not second["unchanged"]
+    same = fetch_idents(["Gaia DR3 1", "Gaia DR3 2"], tmp_path, session=Simbad())
+    assert len(asked) == 3 and same["unchanged"] and same["retrieved_at_utc"] == second["retrieved_at_utc"]
+    renamed["Gaia DR3 1"] = "TOI 99"
+    changed = fetch_idents(["Gaia DR3 1", "Gaia DR3 2"], tmp_path, session=Simbad())
+    assert not changed["unchanged"] and "toi 99" in latest_idents(tmp_path)["Gaia DR3 1"]
+    renamed["down"] = True
+    with pytest.raises(RuntimeError, match="Nothing written"):
+        fetch_idents(["Gaia DR3 1", "Gaia DR3 2", "Gaia DR3 3"], tmp_path, session=Simbad())
+    assert "toi 99" in latest_idents(tmp_path)["Gaia DR3 1"]
 
 
 def test_nasa_archive_reused_when_its_fingerprint_matches(tmp_path, monkeypatch):

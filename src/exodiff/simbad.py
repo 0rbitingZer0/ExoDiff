@@ -34,7 +34,7 @@ def fetch_idents(gaia_ids: list[str], project_root: Path, session=None) -> dict:
     saved_files = sorted(raw_dir.glob(f"{STEM}_*Z.json"))
     saved = json.loads(saved_files[-1].read_text()) if saved_files else {}
     frames = []
-    ids = sorted(set(gaia_ids) - set(saved))
+    ids = sorted(set(gaia_ids))
     for i in range(0, len(ids), CHUNK):
         names = ",".join("'" + g.replace("'", "''") + "'" for g in ids[i:i + CHUNK])
         query = ("SELECT g.id AS gaia, a.id AS ident FROM ident AS g JOIN ident AS a ON g.oidref = a.oidref "
@@ -51,11 +51,10 @@ def fetch_idents(gaia_ids: list[str], project_root: Path, session=None) -> dict:
             raise RuntimeError("SIMBAD returned an unexpected table. Nothing written.")
         frames.append(frame)
     table = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=["gaia", "ident"])
-    found = {g: sorted({norm(x) for x in grp["ident"]}) for g, grp in table.groupby("gaia")}
-    if saved_files and not found:
+    idents = {g: sorted({norm(x) for x in grp["ident"]}) for g, grp in table.groupby("gaia")}
+    if saved_files and idents == saved:
         manifest = json.loads(saved_files[-1].with_name(saved_files[-1].stem + ".manifest.json").read_text())
-        return {**manifest, "unchanged": True, "ids_new": len(ids)}
-    idents = saved | found
+        return {**manifest, "unchanged": True, "ids_asked": len(ids)}
     raw_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     path = raw_dir / f"{STEM}_{stamp}.json"
@@ -65,7 +64,7 @@ def fetch_idents(gaia_ids: list[str], project_root: Path, session=None) -> dict:
                 "retrieved_at_utc": datetime.now(timezone.utc).isoformat(), "ids_requested": len(ids),
                 "objects_found": len(idents), "sha256": hashlib.sha256(body).hexdigest(), "file": path.name}
     path.with_name(path.stem + ".manifest.json").write_text(json.dumps(manifest, indent=2))
-    return {**manifest, "unchanged": False, "ids_new": len(ids)}
+    return {**manifest, "unchanged": False, "ids_asked": len(ids)}
 
 
 def latest_idents(project_root: Path) -> dict:

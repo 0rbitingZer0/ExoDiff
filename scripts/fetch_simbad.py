@@ -22,6 +22,10 @@ def main() -> int:
                        usecols=["pl_name", "default_flag", "gaia_dr3_id"])
     join = join_eu(pd.read_csv(eu_files[-1], low_memory=False), nasa["pl_name"].dropna().unique())
     ids = sorted(set(host_gaia(nasa, join["nasa_only"]).values()))
+    if not ids:
+        runlog.record(ROOT, "SIMBAD", "skipped", error="no star needs a SIMBAD lookup")
+        print("SIMBAD skipped: no star needs a lookup")
+        return 0
     try:
         result = fetch_idents(ids, ROOT)
     except RuntimeError as exc:
@@ -31,8 +35,8 @@ def main() -> int:
         print(f"WARNING: SIMBAD identifiers not updated: {exc}", file=sys.stderr)
         return 0
     runlog.record(ROOT, "SIMBAD", "unchanged" if result["unchanged"] else "fresh", copy_from=result["retrieved_at_utc"],
-                  stars=result["objects_found"], stars_asked=result["ids_new"])
-    print(f"SIMBAD: {result['objects_found']:,} hosts known ({result['ids_new']:,} asked for); SHA-256 {result['sha256']}")
+                  stars=result["objects_found"], stars_asked=result["ids_asked"])
+    print(f"SIMBAD: {result['objects_found']:,} hosts known ({result['ids_asked']:,} asked for); SHA-256 {result['sha256']}")
     return 0
 
 
